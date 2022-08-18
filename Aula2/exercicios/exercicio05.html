@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 04</title>
+</head>
+<body>
+    
+    <h2>Aposentadoria</h2>
+
+    Escreva sua idade <input type="number" id="input_idade"><br>
+    <button onclick="aposentadoria_homem()">Aposentadoria Homen</button>
+    <button onclick="aposentadoria_mulher()">Aposentadoria Mulher</button>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+
+    function aposentadoria_homem(){
+        div_mensagem.innerHTML = `Caro senhor, ainda falta ${70 - Number(input_idade.value)} anos para você se aposentar`
+    }
+
+    function aposentadoria_mulher(){
+        div_mensagem.innerHTML = `Cara senhorita, ainda falta ${60 - Number(input_idade.value)} anos para você se aposentar`
+    }
+
+
+
+</script>
