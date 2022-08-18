@@ -11,6 +11,10 @@
 
         <h2>Refeições no dia</h2>
 
+        Escreva a hora da refeição <input type="time"  id="input_hora">
+        <br><br>
+
+    
         <button onclick="pao()">Pão na chapa</button>
         <button onclick="pf()">Prato feito</button>
         <button onclick="sorvete()">Casquinha Bk</button>
@@ -26,24 +30,23 @@
 
 <script>
     //Var contador
-    var i = 0
+    var i = 1
+
+    var hora = input_hora.value
+
 
     // Criando função para aparecer a refeição que clicou
 
-    function pao(){
-        // Incrementando o contador
-        i ++
+    function pao(){    
         //Apresentando o conteúdo
-        div_refeicoes.innerHTML += i+'- Pão na chapa <br>'
+        div_refeicoes.innerHTML += `${i++} - ${input_hora.value} <br>Pão na chapa <br><br>`
     }
 
     function pf(){
-        i ++
-        div_refeicoes.innerHTML += i+'- Prato feito <br>'
+        div_refeicoes.innerHTML += `${i++} (${input_hora.value}) - Prato Feito <br>`
     }
 
     function sorvete(){
-        i ++
-        div_refeicoes.innerHTML += i+'- Casquinha BK <br>'
+        div_refeicoes.innerHTML += `${i++} (${input_hora.value}) - Sorvete do BK <br>`
     }
 </script>
