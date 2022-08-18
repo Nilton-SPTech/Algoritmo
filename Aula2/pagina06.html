@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pagina 06</title>
+    </head>
+    <body>
+
+
+        <h2>Refeições no dia</h2>
+
+        <button onclick="pao()">Pão na chapa</button>
+        <button onclick="pf()">Prato feito</button>
+        <button onclick="sorvete()">Casquinha Bk</button>
+
+        <div id="div_refeicoes">
+            Suas refeições hoje: <br><br>
+        </div>
+    
+    
+    </body>
+</html>
+
+
+<script>
+    //Var contador
+    var i = 0
+
+    // Criando função para aparecer a refeição que clicou
+
+    function pao(){
+        // Incrementando o contador
+        i ++
+        //Apresentando o conteúdo
+        div_refeicoes.innerHTML += i+'- Pão na chapa <br>'
+    }
+
+    function pf(){
+        i ++
+        div_refeicoes.innerHTML += i+'- Prato feito <br>'
+    }
+
+    function sorvete(){
+        i ++
+        div_refeicoes.innerHTML += i+'- Casquinha BK <br>'
+    }
+</script>
