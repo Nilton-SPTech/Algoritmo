@@ -8,8 +8,34 @@
     </head>
     <body>
         
+        <h2>Como está meu humor</h2>
 
+        <button onclick="feliz()">Feliz!</button>
+        <button onclick="neutro()">Neutro</button>
+        <button onclick="triste()">Triste</button>
+        <button onclick="apagar()">Não quero dizer</button>
 
-        
+        <div id="div_humor"></div>
+
     </body>
 </html>
+
+<script>
+    function feliz(){
+        div_humor.innerHTML = "A vida é bela :)"
+    }
+
+    function neutro(){
+        div_humor.innerHTML = "Estou bem neutro em pae :|"
+    }
+
+    function triste(){
+        div_humor.innerHTML = "Aii de mim :("
+    }
+
+    function apagar(){
+        div_humor.innerHTML = ""
+    }
+
+
+</script>
