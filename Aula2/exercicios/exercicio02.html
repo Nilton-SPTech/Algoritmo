@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercicio 02</title>
+    </head>
+    <body>
+        
+        <h2>Pizzaria delicia</h2>
+        
+        Sabor da Pizza: <input type="text" id="input_sabor">
+        
+        <div>
+            <br>
+            Valor da Pizza: <input type="number" id="input_valor">
+        </div>
+        <div>
+            <br>
+            Quantidade de pessoas: <input type="number" id="input_pessoas">
+        </div>
+
+        <br>
+        <button onclick="pedido()">Pedir pizza</button>
+
+        <div id="div_recado"></div>
+
+
+    </body>
+</html>
+
+<script>
+
+    function pedido(){
+        div_recado.innerHTML = `<br>A pizza de ${input_sabor.value} custa R$${input_valor.value} e cada amigo vai pagar R$${Number(input_valor.value) / Number(input_pessoas.value)}`
+    }
+
+</script>

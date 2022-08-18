@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercicio 03</title>
+    </head>
+    <body>
+        
+        <h2>Calculadora de média</h2>
+
+        <div>
+            Escreva a 1° nota <input type="number" id="input_nota1">
+        </div>
+
+        <div>
+            <br>
+            Escreva a 2° nota <input type="number" id="input_nota2">
+        </div>
+
+        <br>
+        <button onclick="calcular()">Ver média</button>
+
+        <div id="div_exibir"><br></div>
+    </body>
+</html>
+
+<script>
+
+    function calcular(){
+
+        div_exibir.innerHTML = `Sua média foi de ${(Number(input_nota2.value) + Number(input_nota2.value)) / 2}` 
+    }
+</script>
