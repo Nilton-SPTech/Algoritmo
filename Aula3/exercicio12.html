@@ -28,12 +28,24 @@
 
 <script>
 
-
+    
     function imcHomem(){
-        div_mensagem.innerHTML = `Seu IMC é de ${(Number(input_peso.value) / Number(input_altura.value) * Number(input_altura.value)) }`
+        var peso = Number(input_peso.value)
+        var altura = Number(input_altura.value)
+    
+    
+        var calcularHomem = peso / (altura * altura)
+        div_mensagem.innerHTML = `Homem, seu IMC é de ${calcularHomem}`
     }
 
     function imcMulher(){
-        div_mensagem.innerHTML = `Seu IMC é de ${(Number(input_peso.value) / Number(input_altura.value) * Number(input_altura.value)) - ((Number(input_peso.value) / Number(input_altura.value) * Number(input_altura.value)) * 0.10)}`
+        var peso = Number(input_peso.value)
+        var altura = Number(input_altura.value)
+    
+    
+        var calcularHomem = peso / (altura * altura)
+        var calcularMulher = (peso / (altura * altura)) - (calcularHomem * 0.10)
+        
+        div_mensagem.innerHTML = `Mulher, seu IMC é de ${calcularMulher}`
     }
 </script>
