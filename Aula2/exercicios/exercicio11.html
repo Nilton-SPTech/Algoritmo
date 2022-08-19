@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercicio 11</title>
+    </head>
+    <body>
+        
+        <h2>Calculadora de ingressos</h2>
+
+        Quantos ingressos de estudante você vendeu?<br>
+        <input type="number" id="input_estudante">
+        
+        <br>
+        Quantos ingressos comuns você vendeu? <br>
+        <input type="number" id="input_comum">
+
+        <br>
+        Qual o valor do ingressos comum? <br>
+        <input type="number" id="input_valor_comum">
+
+        <br><br>
+        <button onclick="calcular_arrecadaco()">Calcule a arrecadação</button>
+
+
+
+    </body>
+</html>
+
+<script>
+
+    function calcular_arrecadaco(){
+        alert(`A arrecadação foi de R$${((Number(input_valor_comum.value)/2) * Number(input_estudante.value))+
+                                            (Number(input_comum.value) * Number(input_valor_comum.value))}`)
+    }
+</script>

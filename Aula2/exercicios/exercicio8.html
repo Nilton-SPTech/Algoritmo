@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 08</title>
+</head>
+<body>
+    
+    <h2>Leitor de média SPTech</h2>
+
+    Escreva seu nome
+    <input type="text" id="input_nome">
+    
+    <br>
+    Escreva sua nota semestral
+    <input type="number" id="input_semestral">
+
+    <br>
+    Escreva sua nota continuada
+    <input type="number" id="input_continuada">
+
+    <br>
+    <button onclick="calulcar_media()">Calcular média</button>
+
+    <br>
+    <div id="div_mensagem"><br></div>
+ 
+</body>
+</html>
+
+<script>
+
+    function calulcar_media(){
+        div_mensagem.innerHTML = `A média de ${input_nome.value} será de ${(Number(input_semestral.value) * 0.40) + (Number(input_continuada.value) * 0.60)}`
+    }
+</script>

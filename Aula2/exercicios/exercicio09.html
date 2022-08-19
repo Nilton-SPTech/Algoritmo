@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercicio 09</title>
+    </head>
+    <body>
+        
+        <h2>Calculadora lokinha</h2>
+
+        1° Número: <input type="number" id="input_numero1"><br><br>
+        2° Número: <input type="number" id="input_numero2">
+                                                                                                                    
+        <div>
+            <br>
+            <button onclick="multiplicar()">Multiplicar</button>
+            <button onclick="dividir()">Dividir</button>
+            <button onclick="subtrair()">Subtrair</button>
+            <button onclick="somar()">Somar</button>
+        </div>
+
+        <br><br>
+        <div id="div_resultado"></div>
+
+    </body>
+</html>
+
+<script>
+
+    function multiplicar(){
+        div_resultado.innerHTML = `O produto entre ${input_numero1.value} e ${input_numero2.value} é ${Number(input_numero1.value) * Number(input_numero2.value)}`
+    }
+    
+
+    function dividir(){
+        div_resultado.innerHTML = `A razão entre ${input_numero1.value} e ${input_numero2.value} é ${Number(input_numero1.value) / Number(input_numero2.value)}`
+    }
+
+    function subtrair(){
+        div_resultado.innerHTML = `A diferença entre ${input_numero1.value} e ${input_numero2.value} é ${Number(input_numero1.value) - Number(input_numero2.value)}`
+    }
+
+    function somar(){
+        div_resultado.innerHTML = `A soma entre ${input_numero1.value} e ${input_numero2.value} é ${Number(input_numero1.value) + Number(input_numero2.value)}`
+    }
+
+
+</script>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercicio 13</title>
+    </head>
+    <body>
+        
+        <h2>Calculadora de imposto</h2>
+
+        Escreva seu salário bruto: 
+        <input type="number" id="input_salario">
+
+        <br>
+        <button onclick="calcularDesconto()">Calcular descontos</button>
+
+    </body>
+</html>
+
+<script>
+
+    function calcularDesconto(){
+        alert(`Apesar de seu bruto ser R$${input_salario.value}, após os descontos, você receberá somente R$${Number(input_salario.value) - ((Number(input_salario.value) * 0.10) + (Number(input_salario.value) * 0.20) + (Number(input_salario.value) * 0.0333)) }`)
+    }
+</script>

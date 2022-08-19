@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercicio 10</title>
+    </head>
+    <body>
+        <h2>Calculadora d'água</h2>
+
+        Quantos minutos a 1° torneira ficou pingando? 
+        <input type="number" id="input_torneira1">
+
+        <br><br>
+        Quantos minutos a 2° torneira ficou pingando? 
+        <input type="number" id="input_torneira2">
+
+        <br><br>
+        Quantos minutos a 3° torneira ficou pingando? 
+        <input type="number" id="input_torneira3">
+
+
+        <br><br>
+        <button onclick="calcular_desperdicio()">Calcular o desperdicio</button>
+    </body>
+</html>
+
+<script>
+
+    function calcular_desperdicio(){
+        alert(`Suas 3 torneiras, juntas, desperdiçaram ${(Number(input_torneira1.value)*15)+(Number(input_torneira2.value)*15)+(Number(input_torneira3.value)*15)} litros de água`)
+    }
+</script>
