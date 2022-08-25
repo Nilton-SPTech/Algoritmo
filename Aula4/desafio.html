@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Desafio Lucas</title>
+</head>
+<body>
+    <div>
+        <h1>Desafio do Lucas</h1>
+        <div class="div_vertical" onclick="adicionar()">
+            <div class="div_horizontal"></div>
+        </div>
+
+        <br>
+        Escreva as medidas da sua piscina
+        <div>
+            <br>
+            Informe a altura: <input type="text" id="input_altura"><br><br>
+            Informe a largura: <input type="text" id="input_largura"><br><br>
+            Informe a profundidade: <input type="text" id="input_profundidade"><br><br><br>
+            
+            <br>
+            Informe quantos litros de água você vai colocar:
+            <input type="text" id="input_litros"><br><br>
+            <button onclick="calcular()">Calcular Piscina</button>
+        </div>
+        
+    </div>
+
+    
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function calcular(){
+
+        var altura = Number(input_altura.value);
+        var largura = Number(input_largura.value);
+        var profundidade = Number(input_profundidade.value);
+
+        var total = altura * largura * profundidade; 
+
+        var litros = Number(input_litros.value);
+
+
+        if(total == litros){
+            alert(`Já pode tomar seu banho de piscina`);
+        } else
+        if (litros < total ){
+            var retirar = total - litros; 
+            alert(`A piscina está transbordando é necessário retirar ${retirar}L d'água`);
+        }else{
+            var colocar = litros - total; 
+            alert(`A piscina está com pouca água a quantidade para enchela é de ${colocar}L d'água`);
+        }
+    };
+
+    function adicionar(){
+        div_mensagem.innerHTML += `Tome!`
+    }
+
+
+</script>

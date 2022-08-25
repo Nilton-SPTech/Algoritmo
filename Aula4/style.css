@@ -1,0 +1,32 @@
+
+
+
+h1{
+    display: inline;
+}
+
+
+.div_vertical{
+    width: 20px;
+    height: 5px;
+    background-color: rgb(105, 216, 179);
+    transition: transform .6s;
+    margin: 0 0 5px 10px;
+    border-radius: 20px;
+    display: inline-block;
+
+}
+
+.div_horizontal{
+    width: 20px;
+    height: 5px;
+    background-color: rgb(223, 121, 49);
+    transition: transform 0.8s;
+    border-radius: 20px;
+    
+}
+
+.div_horizontal:hover, .div_vertical:hover{
+    transform: rotate(90deg);
+    cursor: pointer;
+}
