@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!--Usando condição IF (se)-->
+        <h2>Cálculo de desconto</h2>
+
+        Qual o seu salário? <input type="text" id="input_salario">
+        <br>
+        <button onclick="ver_desconto()">Ver Desconto</button>
+        <div id="div_mensagem"></div>
+
+        <button onclick="analisar()">Analisar</button>
+    
+        <div id="div_analise"></div>
+    </body>
+</html>
+
+<script>
+
+    function ver_desconto(){
+        var salario = Number(input_salario.value);
+
+        // Condição if() / ESTRUTURA DE DECISÃO A PARTIR DE UMA CONDIÇÃO        
+
+        //Se o salário for maior que 7000 então ele desconta 200 
+        if(salario > 7000){
+            salario -= 200; 
+        }
+        div_mensagem.innerHTML = `Salário liquído: R$${salario}`; 
+    }
+
+    function analisar(){
+    
+        var salario = Number(input_salario.value)
+        div_analise.innerHTML = ''
+
+        if (salario < 2000){
+            div_analise.innerHTML += `É menor que 2000<br>`
+        } 
+
+        if (salario <= 2000){
+            div_analise.innerHTML += `É menor ou igual que 2000<br>`
+        } 
+
+        if(salario > 5000){
+            div_analise.innerHTML += `É maior que 5000<br>`
+        }
+
+        if(salario >= 5000){
+            div_analise.innerHTML += `É maior ou igual que 5000<br>`
+        }
+
+        if(salario === 4000){
+            div_analise.innerHTML += `É igual a 4000<br>`
+        }
+
+        if(salario != 8000){
+            div_analise.innerHTML += `NÃO É 8000<br>`
+        }
+        
+        
+    }
+</script>
