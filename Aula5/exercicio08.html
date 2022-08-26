@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Qual é a quantidade de homens no elevador: 
+    <input type="text" id="input_homem"><br><br>
+
+    Qual é a quantidade de mulheres no elevador: 
+    <input type="text" id="input_mulher"><br>
+
+    <button onclick="ligarElevador()">Ligar elevador</button>
+    
+    <br>
+    <div id="div_mensagem"></div>
+
+
+</body>
+</html>
+
+<script>
+
+    function ligarElevador(){
+        var homem = Number(input_homem.value)
+        var mulher = Number(input_mulher.value)
+
+        var pesoTotal = (homem * 90) + (mulher * 70)
+
+        if(pesoTotal < 500){
+            div_mensagem.innerHTML = `<span style="color: green"> Elevador vai se mover pois está com ${pesoTotal}Kg`
+        }
+        else{
+
+            var perca = pesoTotal - 500
+            div_mensagem.innerHTML = `<span style="color: red"> Alguém precisa descer, está com ${pesoTotal}Kg. Precisa perder ${perca}Kg para mover o elevador`
+
+        }
+    }
+</script>
