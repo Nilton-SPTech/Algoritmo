@@ -1,0 +1,61 @@
+
+
+
+h1{
+    display: inline;
+}
+
+
+.div_vertical{
+    width: 20px;
+    height: 5px;
+    background-color: rgb(105, 216, 179);
+    transition: transform .6s;
+    margin: 0 0 5px 10px;
+    border-radius: 20px;
+    display: block;
+    
+
+}
+
+.div_horizontal{
+    width: 20px;
+    height: 5px;
+    background-color: rgb(223, 121, 49);
+    transition: transform 0.8s;
+    border-radius: 20px;
+    
+}
+
+.div_horizontal:hover, .div_vertical:hover{
+    transform: rotate(90deg);
+    cursor: pointer;
+}
+
+.div_modal{
+    width: 250px;
+    height: 300px;
+    border: 1px black solid;
+    border-radius: 10px;
+    z-index: 2;
+    margin-top: -10px;
+    background-color: aliceblue;
+    position: relative;
+}
+
+.div_header{ 
+
+}
+.span_exit{
+    font-size: 50px;
+    font-weight: 600;
+    font-family: Georgia;
+    color: rgb(192, 8, 8);
+    transform: rotate(45deg);
+    position: absolute;
+    right: 0;
+    top: -10px;
+}
+.span_exit:hover{
+    cursor: pointer;
+}
