@@ -14,6 +14,25 @@
     Seu salário bruto: <input type="text" id="input_bruto">
 
     <br><br>
-    <button>Calcular o seu novo salário</button>
+    <button onclick="calcular()">Calcular o seu novo salário</button>
 </body>
 </html>
+
+<script>
+
+    function calcular(){
+
+        var bruto = Number(input_bruto.value)
+
+        var inss = bruto * .1
+
+        var imposto_renda = bruto *.2
+
+        var imposto_sindical = bruto * 0.0333
+
+        var salario = bruto - (inss + imposto_renda + imposto_sindical)
+
+        alert(`Apesar de seu bruto ser R$${bruto}, após os descontos, você receberá somente R$${salario.toFixed(2)}`)
+    }
+</script>
+
