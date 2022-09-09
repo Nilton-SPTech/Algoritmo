@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 01</title>
+</head>
+<body>
+    
+    <h1>Exercício PIZZARIA</h1>
+
+    Escreva o sabor da sua pizza: 
+    <br><input type="text" id="input_sabor">
+
+    <br><br>
+    Qual o valor da pizza? 
+    <br><input type="text" id="input_valor">
+
+    <br><br>
+    Qual a quantidade de amigos que vão rachar a pizza? 
+    <br><input type="text" id="input_amigos">
+    <br><br>
+    <button onclick="pedir_pizza()">Pedir Pizza</button>
+
+    <br><br>
+    <div id="div_mensagem">
+
+    </div>
+</body>
+</html>
+
+<script>
+
+    function pedir_pizza(){
+
+        var sabor = input_sabor.value; 
+        var valor = Number(input_valor.value); 
+        var amigos = Number(input_amigos.value); 
+
+        var total = valor / amigos; 
+        total = Number(total.toFixed(2))
+        div_mensagem.innerHTML = `A pizza de ${sabor} custa R$${valor} e cada amigo vai pagar R$${total}`;
+
+    }
+</script>
