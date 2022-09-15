@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Estações do ano</h2>
+
+    Selecione sua estação do ano favorita: <br>
+
+    <select id="sel_estacao" onchange="aparecer_estacao()">
+        <option value="./img/primavera.jpg">Primavera</option>
+        
+        <option value="./img/outono.jpg">Outono</option>
+
+        <option value="./img/inverno.jpg">Inverno</option>
+
+        <option value="./img/verao.jpg">Verão</option>
+    </select>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function aparecer_estacao(){
+
+        var url = sel_estacao.value
+
+        div_mensagem.innerHTML = `
+        <img src="${url}" style="width: 200px">
+        `
+    }
+</script>

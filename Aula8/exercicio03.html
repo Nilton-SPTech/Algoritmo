@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Mercadinho do Yoshi</h2>
+
+    <select id="sel_produtos">
+        <option value="12.99">Leite</option>
+        <option value="1.99">Farinha</option>
+        <option value="100.10">Arroz</option>
+        <option value="6.50">Cocal-Cola</option>
+    </select>
+
+    <br><br>
+    <button onclick="ver_preco()">Ver preço</button>
+</body>
+</html>
+
+<script>
+
+    function ver_preco(){
+
+        var valor_produto = Number(sel_produtos.value)
+
+        valor_produto = valor_produto.toFixed(2)
+
+        alert(`Isso custa R$${valor_produto}`)
+    }
+</script>

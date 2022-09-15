@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <h2>Simulador de idade</h2>
+
+    Digite quantos anos você trabalhou: <br>
+    <input type="text" id="input_idade">
+
+    <br><br>
+
+    Informe sobre a empresa que você trabalhou: <br> 
+    <select id="sel_trabalho">
+        <option value="">- Selecione -</option>
+        <option value="40">Empresa Privada</option>
+        <option value="35">Empresa pública</option>
+        <option value="45">Empreendedor</option>
+    </select>
+
+    <br><br>
+    <button onclick="calcular_aposentadoria()">Calcular Aposentadoria</button>
+
+    <br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+
+<script>
+
+    function calcular_aposentadoria(){
+        
+        var idade = Number(input_idade.value)
+
+        var tempo_trabalho = Number(sel_trabalho.value)
+
+        var aposentadoria = tempo_trabalho - idade
+
+        div_mensagem.innerHTML = `Você ainda terá que trabalhar por mais ${aposentadoria} anos para se aposentar.
+`
+
+    }
+</script>

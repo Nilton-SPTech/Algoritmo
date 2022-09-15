@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Tabuada Maluca</h2>
+
+    Selecione o número para a tabuada: <br>
+    <select id="sel_tabuada" onchange="calcular()">
+        <option value="" disabled selected>- Selecione -</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select>
+
+    <br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+
+<script>
+
+    function calcular(){
+        var num = sel_tabuada.value 
+
+        
+        div_mensagem.innerHTML = 
+        `
+        <b>Tabuada do número ${num}</b><br>
+        ${num} x 2 = ${num * 2}<br>
+        ${num} x 3 = ${num * 3}<br>
+        ${num} x 4 = ${num * 4}<br>
+        ${num} x 5 = ${num * 5}<br>
+        ${num} x 6 = ${num * 6}<br>
+        ${num} x 7 = ${num * 7}<br>
+        ${num} x 8 = ${num * 8}<br>
+        ${num} x 9 = ${num * 9}
+        `
+    }
+</script>

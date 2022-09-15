@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Sua oração de São Francisco</h2>
+
+    Selecione sua oração <br>
+    <select id="sel_oracao" onchange="fazer_oracao()">
+        <option value="Que eu leve a Fé">Onde houver Dúvida</option>
+        <option value="Que eu leve a Alegria">Onde houver Tristeza</option>
+        <option value="Que eu leve a Luz">Onde houver Trevas</option>
+        <option value="Que eu leve a Esperança">Onde houver Desespero</option>
+    </select>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function fazer_oracao(){
+
+        var oracao = sel_oracao.value
+
+        div_mensagem.innerHTML = oracao
+    }
+</script>
