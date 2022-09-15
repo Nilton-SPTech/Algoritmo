@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if-else-if</title>
+</head>
+<body>
+    
+    <h2>Teste de saúde</h2>
+
+    Quantos passos dá por dia? 
+    <input type="text" id="input_passos" onkeypress="analisar()">
+
+    <br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function analisar(){
+        var passos = Number(input_passos.value)
+
+        var analise = "Você é "
+
+        if(passos >= 0 ){
+
+            if(passos < 200){
+                analise += "MUITO sendetário"
+            } 
+            else if(passos <=2000){
+                analise += "sedentário"
+            }
+            else if (passos <=5000){
+                analise += "não é sedentário"
+            }
+            else {
+                analise += "quase atleta"
+            }
+        }
+        else {
+            analise = "Digite um valor válido"
+        }
+        div_mensagem.innerHTML = analise
+    }
+</script>
