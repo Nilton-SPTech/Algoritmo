@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>Desconto dos empregados</h2>
+
+    Digite seu sálario: <br>
+    <input type="text" id="input_salario">
+
+    <br><br>
+    Selecione uma opção: <br>
+    <select id="sel_opcoes">
+        <option value="0.10">INSS</option>
+        <option value="0.20">IR</option>
+        <option value="0.05">VT</option>
+    </select>
+
+    <br><br>
+    <button onclick="calcular_desconto()">Ver Desconto</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+    
+</body>
+</html>
+
+<script>
+
+
+    function calcular_desconto(){
+
+        var salario = Number(input_salario.value)
+        var desconto = Number(sel_opcoes.value)
+
+        var total = salario * desconto
+
+        div_mensagem.innerHTML = `Valor desse desconto: R$${total.toFixed(2)}`
+    }
+</script>
