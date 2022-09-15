@@ -11,7 +11,7 @@
     <h2>Teste de saúde</h2>
 
     Quantos passos dá por dia? 
-    <input type="text" id="input_passos" onkeypress="analisar()">
+    <input type="text" id="input_passos" onkeyup="analisar()">
 
     <br><br>
     <div id="div_mensagem"></div>
@@ -19,6 +19,10 @@
 </html>
 
 <script>
+
+    // onkeyup = Enquanto a pessoa digita - Aperta a tecla e solta
+
+    // onkeypress = Enquanto ele pressiona a tecla, mas dá um delay
 
     function analisar(){
         var passos = Number(input_passos.value)
@@ -34,7 +38,7 @@
                 analise += "sedentário"
             }
             else if (passos <=5000){
-                analise += "não é sedentário"
+                analise += "não sedentário"
             }
             else {
                 analise += "quase atleta"
