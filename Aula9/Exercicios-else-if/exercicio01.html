@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Verificação dos esportes</h2>
+
+    Escreva sua altura: <br>
+    <input type="text" id="input_altura" onkeyup="verificar_altura()">
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function verificar_altura(){
+        var altura = Number(input_altura.value)
+
+        var analise = "Você pode ser "
+
+        if (altura <= 1.65){
+            analise += "piloto de corrida"
+        }
+        else if (altura <=1.80){
+            analise += "jogador de futebol"
+        }
+        else{
+            analise += "jogador de vôlei ou basquete"
+        }
+
+        div_mensagem.innerHTML = analise
+    }
+
+
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Classe social TUVUALU</h2>
+
+    Escreva sua renda familiar(mensal): <br>
+    <input type="text" id="input_renda">
+
+    <br><br>
+    <button onclick="analisar_renda()">Analisar Renda</button>
+
+    <br><br>
+
+    <dvi id="div_mensagem"></dvi>
+</body>
+</html>
+
+<script>
+
+    function analisar_renda(){
+
+        var renda = input_renda.value
+
+        var analise = "Classe "
+        if (renda <= 250){
+            analise += 'E'
+        }
+        else if (renda <= 900){
+            analise += 'D'
+        }
+        else if (renda <= 2500){
+            analise += 'C'
+        }
+        else if (renda <= 9500){
+            analise += 'B'
+        }
+        else {
+            analise += 'A'
+        }
+
+        div_mensagem.innerHTML = analise
+    }
+    
+</script>
