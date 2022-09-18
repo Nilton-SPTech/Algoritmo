@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Economize aqui</h2>
+
+    Escreva o valor que você tem que economizar: <br>
+    <input type="text" id="input_economizar">
+
+    <br><br>
+    <button onclick="ver_compra()">Poder de compra</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function ver_compra(){
+        
+        var valor = Number(input_economizar.value)
+
+        var mensagem = ''
+        if(valor <= 0){
+            mensagem = "Nada de compras :("
+        }
+        else if (valor <= 100){
+            mensagem += 'Viajem de ida e volta pra Praia Grande'
+        }
+        else if(valor < 4000){
+            mensagem =  `Viajem de ida e volta pra Praia Grande
+                        <br> Uma boa moto usada`
+        }
+        else {
+            mensagem += `Uma boa moto usada 
+                <br>Mais alguma bobagem legal`
+        }
+
+        div_mensagem.innerHTML = mensagem 
+    }
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Vamos avaliar o quão habilidoso você é</h2>
+
+    <div id="div_contador">Você já clicou 0 vezes</div>  
+
+    <br><br>
+    <button onclick="contador()">Clica neu</button>
+
+</body>
+</html>
+
+<script>
+
+    var i = 0 
+
+    function contador(){
+        i++; 
+
+        mensagem = ''
+        if(i < 5){
+            mensagem = 'Dedo fraquinho, hein'
+        }
+        else if(i <= 10){
+            mensagem = 'Dedo bom, mano'
+        }
+        else if(i <= 15){
+            mensagem = 'Gosta de clicar, hein!'
+        }
+        else {
+            mensagem = 'Eita dedo nervoso!'
+        }
+
+        div_contador.innerHTML = `Você já clicou ${i} vezes <br>
+                                ${mensagem}`
+    }
+</script>

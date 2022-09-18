@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Guardando seu simpático dinheiro</h2>
+
+    <div id="div_mensagem">Valor guardado: R$0.00</div>
+
+    <br>
+    <button onclick="guardar()">Guardar R$5,00</button>
+    <button onclick="gastar()">Gastar R$10,00</button>
+</body>
+</html>
+
+<script>
+    var dinheiro = 0 
+    
+    var mensagem = "Valor guardado: R$" 
+    
+    function guardar(){
+        dinheiro += 5
+        div_mensagem.innerHTML = mensagem+dinheiro.toFixed(2)
+    }
+    function gastar(){
+        dinheiro -= 10
+    div_mensagem.innerHTML = mensagem+dinheiro.toFixed(2)
+    }
+
+</script>

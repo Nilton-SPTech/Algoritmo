@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Metas para economizar</h2>
+
+    Escreva a sua meta de economia: <br>
+    <input type="text" id="input_meta">
+
+    <br><br>
+    Escreva quanto você tem guardado: <br>
+    <input type="text" id="input_guardado">
+
+    <br><br>
+    <button onclick="analisar_economia()">Analisar economia</button>
+
+    <br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function analisar_economia(){
+        var meta = Number(input_meta.value)
+        var guardado = Number(input_guardado.value)
+
+        var mensagem = ''
+
+        if(guardado == meta){
+            mensagem = "Parabéns, meta alcançada!"
+        }
+        else if(guardado > meta) {
+            mensagem = `Parabéns, meta alcançada!
+                        <br> Meta ultrapassada em R$${guardado - meta}`
+        }
+        else {
+            mensagem = ` Força! Ainda em busca da meta! Falta R$${meta - guardado}`
+        }
+
+        div_mensagem.innerHTML = mensagem
+
+    }
+</script>

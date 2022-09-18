@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Meses do ano e suas estações</h2>
+
+    Selecione um mês: <br>
+    <select id="slc_meses" onchange="ver_estacoes()">
+        <option value="Outono">Março</option>
+        <option value="Outono">Abril</option>
+        <option value="Outono">Maio</option>
+        <option value="Inverno">Junho</option>
+        <option value="Inverno">Julho</option>
+        <option value="Inverno">Agosto</option>
+        <option value="Primavera">Setembro</option>
+        <option value="Primavera">Outubro</option>
+        <option value="Primavera">Novembro</option>
+        <option value="Verão">Dezembro</option>
+        <option value="Verão">Janeiro</option>
+        <option value="Verão">Fevereiro</option>
+    </select>
+
+    <br><br>
+    <img id="img_estacao" width="250px">
+</body>
+</html>
+
+<script>
+
+    function ver_estacoes(){
+        
+        var estacao = slc_meses.value
+
+        var url = 'img/'
+
+        if(estacao == 'Outono'){
+            url += 'outono.jpg'
+        }
+        if(estacao == 'Inverno'){
+            url += 'inverno.jpg'
+        }
+        if (estacao == 'Primavera'){
+            url += 'primavera.jpg'
+        }
+        if(estacao == 'Verão'){
+            url += 'verao.jpg'
+        }
+        img_estacao.src = url
+
+    }
+</script>

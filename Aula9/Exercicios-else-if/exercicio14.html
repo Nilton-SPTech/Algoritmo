@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <center>
+
+        <div id="div_vida">Vida do Lutador: 1000</div>
+        
+        <img id="img_lutador" src="img/tranquilo.jpg" width="300px">
+
+        <button id="button" onclick="apanhar()">Apanhar</button>
+        <button id="button" onclick="concentrar()">Concentrar força</button>
+    </center>
+
+
+</body>
+</html>
+
+<script>
+
+    var vida = 1000
+
+    
+    var mensagem = 'Vida do Lutador: '
+    
+    function apanhar(){
+        if(vida > 0)
+        {
+            vida -= 100
+            div_vida.innerHTML = mensagem + vida.toFixed(0)
+            if(vida <= 0){
+                div_vida.innerHTML += "<br> Lutador já era!"
+                img_lutador.src = "img/machucado.png"
+            }
+            else if(vida > 0){
+                div_vida.innerHTML += "<br>Lutador ainda <b>vivo</b>"
+            }
+        }
+
+    }
+
+    function concentrar(){
+    
+        if(vida > 0){
+            vida += (vida * 0.05)
+    
+            div_vida.innerHTML = mensagem + vida.toFixed(0)
+            if(vida > 0){
+                div_vida.innerHTML += "<br>Lutador ainda <b>vivo</b>"
+            }
+        }
+    }
+
+
+</script>
