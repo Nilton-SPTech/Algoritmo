@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Pequenas comidas</h2>
+
+    Proteínas
+    <select id="sel_proteina" onchange="selecionar_comida()">
+        <option value="">Ovo</option>
+        <option value="">Carne</option>
+        <option value="soja">Soja</option>
+    </select>
+
+    <br>
+    Sobremesas:
+    <select id="sel_sobremesa" onchange="selecionar_comida()">
+        <option value="">Pudim</option>
+        <option value="">Petit Gateu</option>
+        <option value="brigadeiro">Brigadeiro de Soja</option>
+    </select>
+
+    <br><br>
+
+</body>
+</html>
+
+<script>
+
+    function selecionar_comida(){
+        var sobremesa = sel_sobremesa.value
+        var proteina = sel_proteina.value
+
+        if (proteina == "soja" && sobremesa == "brigadeiro"){
+            alert("Você poderia ser vegano(a)")
+        }
+        else{
+            alert("Você NÃO pode ser vegano(a)")
+        }
+    }
+</script>

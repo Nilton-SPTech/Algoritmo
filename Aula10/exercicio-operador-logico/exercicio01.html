@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <h2>Feirinha do rolo</h2>
+
+    <input type="text" id="input_fruta" placeholder="Escreva o nome da fruta">
+
+    <br><br>
+    <input type="text" id="input_valor" placeholder="Escreva o valor da fruta">
+
+    <br><br>
+    <button onclick="comprar()">Eu vou comprar?</button>
+
+    <br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function comprar(){
+        var fruta = input_fruta.value
+        var valor = Number(input_valor.value)
+
+        var mensagem = ''
+        if(fruta == "uva" && valor <= 8.50){
+            mensagem = "Vou comprar!"
+        }
+        else {
+            mensagem = "Sem fruta hoje :("
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

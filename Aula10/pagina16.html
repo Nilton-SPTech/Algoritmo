@@ -29,13 +29,16 @@
         var dinheiro = Number(input_dinheiro.value)
 
         if(dinheiro >= 100 && temperatura >= 20){
-            div_mensagem.innerHTML = "Sim"
+            apresentar("Sim")
         }
         else{
-            div_mensagem.innerHTML = "Não"
+            apresentar("Não") 
         }
 
     }
 
+    function apresentar(mensagem){
+        div_mensagem.innerHTML = mensagem
+    }
 
 </script>
