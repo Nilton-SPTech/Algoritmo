@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Avaliar o simpático aluno</h2>
+
+    Escreva sua nota: <br>
+    <input type="text" id="input_nota">
+
+    <br><br>
+    <button onclick="avaliar_aluno()">Avaliar aluno</button>
+
+
+</body>
+</html>
+
+<script>
+
+    function avaliar_aluno(){
+        var nota = input_nota.value
+
+        if(nota >=0 && nota <=10){
+            alert("Nota válida!")
+        }
+        else{
+            alert("Onde já se viu nota menor que 0 e maior que 10?!")
+        }
+    }
+</script>

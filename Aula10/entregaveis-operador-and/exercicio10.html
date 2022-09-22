@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Escreva a altura inicial: <br>
+    <input type="text" id="input_inicial">
+
+    <br><br>
+    Escreva a altura final: <br>
+    <input type="text" id="input_final">
+
+    <br><br>
+
+    Qual é o seu nome? <input type="text" id="input_nome"> <br>
+    Qual é a sua altura? <input type="text" id="input_altura">
+
+    <br><br>
+
+    <button onclick="verificar()">Verificar</button>
+
+    <br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function verificar(){
+        var inicial = Number(input_inicial.value)
+        var final = Number(input_final.value)
+
+        var altura = Number(input_altura.value)
+        var nome = input_nome.value
+
+        var mensagem = ''
+
+        if(inicial > 1 && final > inicial){
+            if(altura >= inicial && altura <= final){
+                mensagem = `<br>O candidato ${nome} com altura de ${altura.toFixed(2)} participará do processo de seleção de piloto`
+            }
+            else{
+                mensagem = `<br>Infelizmente o candidato ${nome} com altura de ${altura.toFixed(2)} não atende os requisitos`
+            }
+            div_mensagem.innerHTML += mensagem
+        }
+        else{
+            alert("OPS, digite novamente")
+        }
+    }
+</script>

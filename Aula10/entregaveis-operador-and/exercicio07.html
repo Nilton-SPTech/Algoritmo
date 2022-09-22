@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <h2>Programa aluno</h2>
+
+    Escreva sua nota: <br>
+    <input type="text" id="input_nota">
+
+    <br><br>
+    Escreva sua frequência: <br>
+    <input type="text" id="input_frequencia">
+
+    <br><br>    
+    <button onclick="avaliar_aluno()">Avaliar aluno</button>
+
+
+</body>
+</html>
+
+<script>
+
+    function avaliar_aluno(){
+
+        if(input_nota.value > 6 && input_frequencia.value > 75){
+            alert('Parabéns! Aprovado!')
+        }
+        else{
+            alert('Infelizmente, não foi desta vez')
+        }
+    }
+</script>

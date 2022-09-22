@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>NETFLIX</h2>
+
+    Informe a hora do dia que você acessa a plataforma: <br>
+    <input type="text" id="input_hora">
+
+    <br><br>
+    <button onclick="ver_recomendacao()">Ver recomendação</button>
+
+    <br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function ver_recomendacao(){
+
+        var hora = input_hora.value
+
+        var mensagem = ''
+        if(hora > 19 && hora < 21){
+            mensagem = `Não é recomendável que você assista sua série favorita no horário ${hora}h!`
+        }
+        else {
+            mensagem = `O horário ${hora}h é adequado para assistir sua série favorita!`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    } 
+</script>
