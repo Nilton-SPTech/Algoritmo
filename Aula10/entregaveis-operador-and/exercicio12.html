@@ -16,6 +16,9 @@
     <br><br>
 
     <button onclick="comprar()">Comprar</button>
+
+    <br><br>
+    <div id="div_mensagem"></div>
 </body>
 </html>
 
@@ -28,23 +31,25 @@
 
         var total = 0
 
-        if(passagens >= 8 && passagens < 50){
+        if(passagens >= 8 && passagens <= 50){
 
             if(passagens >= 8 && passagens <= 19 ){
-                valor_passagem += (valor_passagem * 0.03)
+                valor_passagem -= (valor_passagem * 0.03)
 
                 total = valor_passagem * passagens
             }
             else if(passagens >= 20 && passagens <= 49){
-                valor_passagem += (valor_passagem * 0.05)
+                valor_passagem -= (valor_passagem * 0.05)
 
                 total = valor_passagem * passagens
             }
             else if(passagens == 50){
-                valor_passagem += (valor_passagem * 0.07)
+                valor_passagem -= (valor_passagem * 0.07)
 
                 total = valor_passagem * passagens
             }
+
+            div_mensagem.innerHTML = `Total a pagar R$${total}`
 
         }
         else{
