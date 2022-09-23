@@ -79,12 +79,12 @@
     function selecionar(){
 
 
-        jogador_inicial = input_piloto_inicial.value
-        jogador_final = input_piloto_final.value
+        jogador_inicial = Number(input_piloto_inicial.value)
+        jogador_final = Number(input_piloto_final.value)
 
 
-        piloto_inicial = input_jogador_inicial.value
-        piloto_final = input_jogador_final.value
+        piloto_inicial = Number(input_jogador_inicial.value)
+        piloto_final = Number(input_jogador_final.value)
 
         if(jogador_inicial > 1 && jogador_final >jogador_inicial && piloto_inicial > 1.5 && piloto_final > piloto_inicial){
             
@@ -106,7 +106,7 @@
     function selecionar_pessoa(){
 
         nome = input_nome.value
-        altura_pessoa = input_altura.value
+        altura_pessoa = Number(input_altura.value)
         modalidade = sel_modalidade.value
 
         if(modalidade == "j"){
