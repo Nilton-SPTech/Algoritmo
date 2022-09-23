@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Vou te mostrar como é ruim um carro 0km</h1>
+
+    <br>
+    Qual o valor do carro A VISTA?<br> 
+    <input type="text" id="input_valor_avista">
+
+    <br><br>
+    Qual a taxa de juro ao mês(a.m)?<br>
+    <input type="text" id="input_taxa_mes">
+    
+    <br><br>
+    Informe a quantidade de parcelas: <br>
+    <input type="text" id="input_parcelas">
+
+    <br><br>
+    <button onclick="calcular()">Calcular prejú</button>
+
+    <br><br>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+
+    function calcular(){
+
+        // var valor = Number(input_valor_avista.value); 
+
+        // var taxa = Number(input_taxa_mes.value); 
+
+        // var parcelas = Number(input_parcelas.value); 
+
+
+        // var razao = (taxa * 0.01) + 1;
+        // console.log(razao)
+        // var primeiro_termo = valor / parcelas; 
+        // console.log(primeiro_termo)
+        // var total = primeiro_termo * (razao ** (parcelas - 1));
+        // var arredondando = parseFloat(total.toFixed(2));
+        // total = arredondando * parcelas;
+        
+        // console.log(total)
+        
+
+        // var valor_avista = valor * 0.8;
+        // console.log(valor_avista); 
+
+        // var carros_pagos =  valor_avista / total    ;
+
+        // carros_pagos = parseFloat(carros_pagos.toFixed(2));
+        // console.log(carros_pagos);
+
+        // div_mensagem.innerHTML = `Seu carro vai sair por um total de R$${total}. Após 1 mês, ele já vai valer só R${valor_avista}. Porque comprou financiado, vai pagar o correspondente a ${carros_pagos} carros`
+
+
+        
+        var valor = Number(input_valor_avista.value); 
+
+        var taxa = Number(input_taxa_mes.value); 
+
+        var parcelas = Number(input_parcelas.value); 
+
+
+        var razao = (taxa * 0.01) + 1;
+        console.log(razao)
+
+
+        var primeiro_termo = valor / parcelas; 
+        console.log(primeiro_termo)
+
+
+        var total = primeiro_termo * ((razao ** parcelas) - 1) / (razao - 1)
+        
+
+        var valor_avista = valor * 0.8;
+        console.log(valor_avista); 
+
+        var carros_pagos =  total  / valor_avista  ;
+
+        carros_pagos = parseFloat(carros_pagos.toFixed(2));
+        console.log(carros_pagos);
+
+        div_mensagem.innerHTML = `Seu carro vai sair por um total de R$${total}. Após 1 mês, ele já vai valer só R${valor_avista}. Porque comprou financiado, vai pagar o correspondente a ${carros_pagos} carros`
+    }
+</script>

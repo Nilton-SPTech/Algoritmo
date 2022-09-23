@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    
+    <h1>Sistema de controle de venda Wen Rac</h1>
+
+    <br>
+    Escreva seu nome: <br>
+    <input type="text" id="input_nome">
+
+    <br><br>
+    Qual o modelo do carro que deseja comprar? 
+    <br><input type="text" id="input_modelo">
+
+    <br><br>
+    Qual o valor do carro que deseja comprar? <br>
+    <input type="text" id="input_valor">
+
+    <br><br>
+    Informe o cupom: 
+    <input type="text" id="input_cupom">
+
+    <br><br>
+    <button onclick="compra()">Efetuar compra</button>
+
+    <br><br>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+
+
+    function compra(){
+
+        var nome = input_nome.value;
+
+        var modelo = input_modelo.value; 
+
+        var valor = Number(input_valor.value); 
+
+        var cupom = input_cupom.value; 
+
+
+        if(modelo != ""){
+
+            if(valor >= 5000){
+                
+                if(cupom == "CARRO_NOVO"){
+                    alert(`Cupom válido! Desconto será aplicado!<br>`);
+
+                    var desconto = valor * 0.11;
+                    var total = valor - desconto;
+
+                    div_mensagem.innerHTML += `<span style="color: green"><i> Olá, ${nome}! O carro de modelo ${modelo}, de valor R$${valor}, sairá por R$${total}`
+
+                }
+                else{
+                    alert (`Cupom inválido! Desconto não será aplicado<br>`)
+                    var total = valor;
+
+                    div_mensagem.innerHTML += `<span style="color: red "><b> Olá, ${nome}! O carro de modelo ${modelo}, de valor R$${valor}, sairá por R$${total}`
+                }
+
+
+            }
+            else {
+                alert (`Valor inválido! O carro está barato demais`);
+            }
+        }
+        else{
+            alert(`Informe o modelo do carro para prosseguir com a compra!`); 
+        }
+
+
+    }
+</script>
