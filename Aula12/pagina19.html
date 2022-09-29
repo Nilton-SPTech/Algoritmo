@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <!-- TRABALHANDO COM O RESTO DAS CONTAS -->
+
+    <input type="text" id="in_numero" placeholder="Qualquer número" onkeyup="analisar()">
+
+    <br><br>
+    <div id="div_analise"></div>
+</body>
+</html>
+
+<script>
+
+    function analisar(){
+
+        var num = Number(in_numero.value)
+
+        var mensagem = ''
+
+        // FAZENDO A OPERAÇÃO PARA DESCOBRIR O RESTO DA DIVISÃO
+        // SE ELE PODE SER DIVIDIDO POR 2 (PAR/ ÍMPAR)
+        if((num % 2) == 0){
+            mensagem = 'É par'
+        }
+        else{
+            mensagem = 'É Ímpar'
+        }
+
+        // SE ELE PODE SER MÚLTIPLO DE 7
+        if((num % 7) == 0){
+            mensagem += '<br>É múltiplo de 7'
+        }
+        else{
+            mensagem += '<br>NÃO é múltiplo de 7'
+        }
+
+        div_analise.innerHTML = mensagem
+    }
+</script>
