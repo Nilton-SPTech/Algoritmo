@@ -25,13 +25,21 @@
         // VERIFICANDO SE TEM B
         var tem_b = frase.indexOf('b') >= 0
 
-        
+        // CAIXA ALTA
+        var caixa_alta = frase.toUpperCase()
+
+        //CAIXA BAIXA
+        var caixa_baixa = frase.toLowerCase()
+
+        // TROCANDO AS LETRAS
+        var troca = frase.replaceAll("a", "@")
+
         div_descricao.innerHTML = `
-            O texto tem ${tamanho} caracteres <br>
-            O texto tem a letra 'b'? ${tem_b} <br>
-            Com ele ficaria em CAIXA ALTA? X <br>
-            Como ele ficaria em caixa baixa? X <br>
-            Se eu trocar todos os 'a' por '@': X <br>
+            O texto tem ${tamanho} caracteres <br><br>
+            O texto tem a letra 'b'? ${tem_b} <br><br>
+            Com ele ficaria em CAIXA ALTA? ${caixa_alta} <br><br>
+            Como ele ficaria em caixa baixa? ${caixa_baixa} <br><br>
+            Se eu trocar todos os 'a' por '@': ${troca} <br><br>
         `
     }
 </script>
