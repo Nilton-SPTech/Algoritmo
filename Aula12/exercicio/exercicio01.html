@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <h2>Usuario</h2>
+
+    Login: <br>
+    <input type="text" id="in_login">
+
+    <br><br>
+    Senha: <br>
+    <input type="text" id="in_senha">
+
+    <br><br>
+    <button onclick="entrar()">Entrar</button>
+
+    <br><br>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+
+    function entrar(){
+        var login = in_login.value
+
+        var senha = in_senha.value
+
+        var verificarLogin = login == 'aidimin'
+        var verificarSenha = senha == 'seinha'
+
+        var autenticado = senha && login
+
+        if(autenticado){
+            div_mensagem.innerHTML =  `<span style="color: blue">Usuário autenticado com sucesso!` 
+        }
+
+        var mensagem = ''
+        if(!autenticado){
+            mensagem += `<br><span style="color: red">Seu login está inválido!`
+            mensagem += `<br><span style="color: red">Sua senha está inválido!`
+        }
+        else if(!verificarLogin){
+            mensagem = `<br><span style="color: red">Seu login está inválido!`
+        }
+        else if(!verificarSenha){
+            alert("Entre em contato com o suporte para recuperar sua senha" )
+        }
+        div_mensagem.innerHTML = mensagem
+
+    }
+</script>

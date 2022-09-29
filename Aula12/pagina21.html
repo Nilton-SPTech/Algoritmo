@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input placeholder="Frase qualquer" id="in_frase" onkeyup="descrever()">
+    <br><br>
+    <div id="div_descricao"></div>
+</body>
+</html>
+
+<script>
+
+    function descrever(){
+        var frase = in_frase.value
+
+        // TAMANHO DA FONTE
+        var tamanho = frase.length
+
+        // VERIFICANDO SE TEM B
+        var tem_b = frase.indexOf('b') >= 0
+
+        
+        div_descricao.innerHTML = `
+            O texto tem ${tamanho} caracteres <br>
+            O texto tem a letra 'b'? ${tem_b} <br>
+            Com ele ficaria em CAIXA ALTA? X <br>
+            Como ele ficaria em caixa baixa? X <br>
+            Se eu trocar todos os 'a' por '@': X <br>
+        `
+    }
+</script>
