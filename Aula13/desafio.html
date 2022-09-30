@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    Qual o tipo de arroz usado: <br>
+    <select name="" id="tipo">
+        <option value="i">Integral</option>
+        <option value="b">Branco</option>
+    </select>
+
+    <br>
+    Digite o tempo(min)
+    <input type="text" id="in_min">
+
+    <br>
+    Qual a quantidade de sal
+    <input type="text" id="in_sal">
+
+    <br>
+    <button onclick="avaliar()">Avaliar Arroz</button>
+
+    <br>
+
+    <img style="width: 200px;" id="img_arroz">
+    <div id="mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function avaliar(){
+        var tipo_a = tipo.value
+
+        var tempo = in_min.value
+        var sal = in_sal.value
+
+        if(tipo_a == "b" && tempo == 10 && sal <= 10 || tipo_a == "i" && tempo == 20 && sal <= 15){
+            mensagem.innerHTML = "Arroz Perfeito!<br>"
+
+            if(tipo_a == 'b'){
+                img_arroz.src = "b.jpg"
+            }
+            else{
+                img_arroz.src = "i.jpg"
+            }
+        }
+        else{
+            mensagem.innerHTML = "Seu arroz não está perfeito<br>"
+            img_arroz.src = "bravo.jpg"
+
+        }
+   
+
+
+    }
+</script>
+

@@ -33,7 +33,8 @@
         var caixa_baixa = frase.toLowerCase()
 
         // TROCANDO AS LETRAS
-        var troca = frase.replaceAll("a", "@")
+        //O PRIMEIRO PARAMETRO É QUAL CARACTERE ELE QUER ENCONTRAR E O SEGUNDO É POR QUAL ELE VAI SUBSTITUIR
+        var troca = frase.replaceAll("a", "<b style='font-size:20px'>a</b>")
 
         div_descricao.innerHTML = `
             O texto tem ${tamanho} caracteres <br><br>
