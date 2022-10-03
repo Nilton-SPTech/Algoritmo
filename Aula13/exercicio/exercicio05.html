@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    INICIANTE <br>
+    <select id="sel_iniciante">
+        <option value="Planta">Planta</option>
+        <option value="Água">Água</option>
+        <option value="Fogo">Fogo</option>
+    </select>
+
+    <br><br>
+    OPONENTE <br>
+    <select id="sel_oponente">
+        <option value="Planta">Planta</option>
+        <option value="Água">Água</option>
+        <option value="Fogo">Fogo</option>
+    </select>
+    
+
+    <br><br>
+    <button onclick="batalhar()">Batalhar</button>
+
+    <br><br><br>
+    
+    <li>Iniciante = <span id="span_iniciante"></span></li>  <br>
+    <li>Oponente = <span id="span_oponente"></span></li> <br>
+
+    <li>Mensagem = “<span id="span_mensagem"></span>”</li> <br>
+    <li>
+        Contagem = “Vitórias do Iniciante: <span id="span_v">0</span>
+        / Derrotas do Iniciante: <span id="span_d">0</span>
+        / Empates: <span id="span_e">0</span>”
+    </li> 
+
+</body>
+</html>
+
+<script>
+
+
+    var v = 0
+    var d = 0
+    var e = 0
+
+    function batalhar(){
+        var ini = sel_iniciante.value
+        var opo = sel_oponente.value
+
+        var mensagem = "" 
+        // EM CASO DE EMPATE
+        if(ini == opo){
+            mensagem = "A batalha empatou!"
+            e++
+        }
+        else {
+            if(ini == "Água" && opo == "Fogo" || ini == "Planta" && opo == "Água" || ini == "Fogo" && opo == "Planta"){
+                mensagem = "O iniciante venceu!"
+                v++
+            }
+            else{
+                mensagem = "O iniciante perdeu!"
+                d++
+            }
+        }
+
+
+        
+
+
+
+        span_iniciante.innerHTML = ini
+        span_oponente.innerHTML = opo
+
+        span_v.innerHTML = v
+        span_d.innerHTML = d
+        span_e.innerHTML = e
+        span_mensagem.innerHTML = mensagem
+    }
+</script>
