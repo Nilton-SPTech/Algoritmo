@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Nome do produto: <br>
+    <input type="text" id="in_produto">
+
+    <br><br>
+    Valor do produto: <br>
+    <input type="text" id="in_valor">
+
+    <br><br>
+    Cupom de Desconto: <br>
+    <input type="text" id="in_cupom">
+
+    <br><br>
+    <button onclick="desconto()">Aplicar Desconto</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+
+    function desconto(){
+        var produto = in_produto.value
+        var valor = in_valor.value
+        var cupom = in_cupom.value
+
+        var troca_p = produto.replaceAll(" ", "")
+        var troca_v = valor.replaceAll(" ","")
+
+        var mensagem = ""
+        if(troca_p == ""){
+            alert("Insira um produto para prosseguir!")
+        }
+        else if(troca_v == ""){
+            alert("Insira um preço para prosseguir!")
+        }
+        else{
+
+            var validando_produto = (produto.toLowerCase() == "tênis") || (produto.toLowerCase() == "livros") || (produto.toLowerCase() == "material escolar")
+
+            var validando_produto_tec = (produto.toLowerCase() == "celular") || (produto.toLowerCase() == "notebook") || (produto.toLowerCase() == "tablet")
+
+            if(validando_produto && cupom == "GERAL_10"){
+
+                valor -= valor * 0.10
+                var mensagem = `Cupom para produtos em geral foi aplicado! Preço final será R$${valor}`
+
+            }
+
+            else if(validando_produto_tec && cupom =="TECH_19"){
+                valor -= valor * 0.19
+                var mensagem = `Cupom para produtos tecnológicos foi aplicado! Preço final será R$${valor}`
+            }
+            else{
+                mensagem = "Cupom não aplicado! Preencha os campos e tente novamente!"
+            }
+
+            div_mensagem.innerHTML = mensagem
+        }
+
+    }
+</script>
