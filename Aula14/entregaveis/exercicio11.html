@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    Quantos títulos mundiais da FIFA seu clube tem? <br>
+    <input type="text" id="input_mundial">
+
+    <br><br>
+    <button onclick="ver_trofeu()">Ver troféus de mundiais da FIFA</button>
+
+    <br><br>
+    <div id="div_mensagem">
+        
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    function ver_trofeu(){
+        div_mensagem.innerHTML = ""
+        var mundial = Number(input_mundial.value)
+
+        var i = 0
+        while(i<mundial){
+            div_mensagem.innerHTML += `<img src="trofeu.jpg" width="100px">`
+            i++
+        }
+    }
+</script>

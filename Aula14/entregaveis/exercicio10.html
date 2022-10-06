@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    Escreva um valor para estipular um intervalo: <br>
+    <input type="text" id="input_num1" placeholder="1° número"> <br>
+
+    <input type="text" id="input_num2" placeholder="2° número"> 
+
+    <br><br>
+    <button onclick="multiplicar_par()">S2 Pares...</button>
+
+    <br><br>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+
+    function multiplicar_par(){
+        var num1 = Number(input_num1.value)
+        var num2 = Number(input_num2.value)
+
+
+        
+        while(num1 <= num2){
+
+            if((num1%2) == 0){
+                div_mensagem.innerHTML += `${num1} <br>`
+            }
+            num1 ++
+        }
+
+    }
+</script>

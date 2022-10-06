@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Escolha o valor da tabuada: <br>
+    <select id="sel_num" >
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select>
+
+    <br><br>
+    Até que número a sua tabuada deve ser construida? <br>
+    <input type="text" id="input_construida">
+
+    <br><br>
+    <button onclick="ver_tabuada()">Ver Tabuada</button>
+    
+    
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+
+<script>
+
+    function ver_tabuada(){
+        div_mensagem.innerHTML =""
+        var num = Number(sel_num.value)
+        var tabuada = Number(input_construida.value)
+
+        var i = 1
+        var cor = ""
+
+        while(i <= tabuada){
+
+            if((i%2)==0){
+                cor = "blue"
+            }
+            else{
+                cor = "red"
+            }
+            div_mensagem.innerHTML += `<br><span style="color:${cor} ;">${num} x ${i} = ${num * i}</span>`
+            i++
+        }
+    }
+</script>
