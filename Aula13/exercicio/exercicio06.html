@@ -32,8 +32,9 @@
 <script>
 
     function desconto(){
-        var produto = in_produto.value
-        var valor = in_valor.value
+        
+        var produto = in_produto.value.toLowerCase()
+        var valor = Number(in_valor.value)
         var cupom = in_cupom.value
 
         var troca_p = produto.replaceAll(" ", "")
@@ -48,9 +49,9 @@
         }
         else{
 
-            var validando_produto = (produto.toLowerCase() == "tênis") || (produto.toLowerCase() == "livros") || (produto.toLowerCase() == "material escolar")
+            var validando_produto = (produto == "tênis") || (produto == "livros") || (produto == "material escolar")
 
-            var validando_produto_tec = (produto.toLowerCase() == "celular") || (produto.toLowerCase() == "notebook") || (produto.toLowerCase() == "tablet")
+            var validando_produto_tec = (produto == "celular") || (produto == "notebook") || (produto == "tablet")
 
             if(validando_produto && cupom == "GERAL_10"){
 

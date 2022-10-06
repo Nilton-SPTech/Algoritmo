@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onclick="repetir()">Repetir frase!</button>
+</body>
+</html>
+
+<script>
+
+    function repetir(){
+
+        // FALANDO QUE A VARIAVEL DE INCREMENTO VAI COMEÇAR COM 0
+        var i = 0
+
+        // É UM IF QUE PODE REPETIR - POIS ELE VOLTA NA CONDIÇÃO ATÉ QUE ELA SEJA FALSA
+        // USANDO UM LAÇO DE REPETIÇÃO WHILE - FAÇA
+        // O WHILE NECESSÁRIAMENTE PRECISA TER UM PARAMÊTRO PASSADO
+        while(i < 5){
+
+            //MOSTRANDO UMA MENSAGEM E POR FIM QUAL É O NÚMERO QUE ESTÁ O CONTADOR
+            alert(`Foco, força e fé! Contador: ${i+1}`)
+
+            // SOMANDO MAIS UMA À VARIAVEL INCREMENTO
+            i++
+        }
+        // FIM DO WHILE
+        
+    }
+</script>
