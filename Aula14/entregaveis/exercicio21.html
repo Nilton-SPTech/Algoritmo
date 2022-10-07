@@ -44,11 +44,35 @@
         var metros = Number(input_metros.value)
 
         var i = 0
+        var mensagem = "" 
 
         if(onibus < 0 || trens < 0 || metros < 0){
             alert("Erro, valores errados")
         }
-        else{
+        else if(onibus == 0 && trens == 0 && metros == 0){
+            div_mensagem.innerHTML += `<br><span style="color: yellow ;">OPS... Parece que esse veio de helicóptero!!!  Kkk</span>`
+
+        }
+        
+        if(onibus == 0){
+            mensagem += `<br>NÃO PRECISOU PEGAR O ÔNIBUS`
+
+        }
+        if(trens == 0){
+            mensagem += `<br>NÃO PRECISOU PEGAR O TREM`
+
+
+        }
+        if(metros == 0){
+            mensagem += `<br>NÃO PRECISOU PEGAR O METRÔ`
+
+        }
+
+        div_mensagem.innerHTML = mensagem
+
+        
+        
+        if(onibus > 0 || trens > 0 || metros > 0){
 
             while(i < onibus){
                 var cor = "red"

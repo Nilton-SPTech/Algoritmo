@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onclick="ver_numero()">Curto 3 e 5!</button>
+
+
+    <br><br>
+    <div id="div_mensagem"></div>
+
+    <span style="color: red;"></span>
+</body>
+</html>
+
+<script>
+
+    function ver_numero(){
+        var i = 0
+
+        while(i <= 100){
+
+            if((i%3)!=0 && (i%5)!=0){
+                div_mensagem.innerHTML += i
+
+            }
+            else if((i%3)==0){
+    
+                div_mensagem.innerHTML += `<span style="color: red;">É TRI!</span>`
+            }
+            if((i%5)==0){
+                div_mensagem.innerHTML += `<span style="color: blue;"> É PENTA!!</span>`
+
+            }
+
+            div_mensagem.innerHTML += `<br>`
+            i++
+        }
+    }
+</script>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    Valor que você já tem guardado: <br>
+    <input type="text" id="input_guardado" onkeyup="tirar_vermelho(1)">
+
+    <br><br>
+    Valor que será poupado a cada mês: <br>
+    <input type="text" id="input_poupado" onkeyup="tirar_vermelho(2)">
+
+    <br><br>
+
+    Quantidade de meses que você irá poupar: <br>
+    <input type="text" id="input_meses" onkeyup="tirar_vermelho(3)">
+
+    <br><br>
+    <button onclick="poupar()">Vamos poupar</button>
+
+    <br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+
+<script>
+
+
+    function poupar(){
+
+        div_mensagem.innerHTML = ""
+        var meses = Number(input_meses.value)
+        var guardado = Number(input_guardado.value)
+        var poupado = Number(input_poupado.value)
+
+
+        var i = 0
+        if(validar()){
+            var n_guardado = guardado
+            while(i < meses){
+
+                i++
+                var n_guardado = n_guardado + poupado
+                div_mensagem.innerHTML += `<br>Marco tinha ${guardado}, depois do depósito do ${i}º mês ele ficou com ${n_guardado}`
+
+            }
+        }
+        
+
+        
+    }
+
+    function validar(){
+        var guardado = Number(input_guardado.value)
+        var poupado = Number(input_poupado.value)
+        var meses = Number(input_meses.value)
+
+        if(guardado == ""){
+            input_guardado.style.background = "#D91A2A"
+            div_mensagem.innerHTML += `<br>É necessário ter dinheiro guardado`
+
+            var v_guardado = false
+        } else{
+            input_guardado.style.background = "white"
+            var v_guardado = true
+
+        }
+
+        var validando_poupado = poupado < 0
+        if(poupado == "" || validando_poupado){
+            input_poupado.style.background = "#D91A2A"
+            div_mensagem.innerHTML += `<br>É necessário ter dinheiro poupado`
+
+            var v_poupado = false
+        }
+        else{
+            input_poupado.style.background = "white"
+            var v_poupado = true
+        }
+
+        var validando_meses = meses > 6 && meses < 20
+        if(meses == "" || !validando_meses){
+            input_meses.style.background = "#D91A2A"
+            div_mensagem.innerHTML += `<br>Insira uma quantidade de meses válida`
+
+            var v_meses = false
+        }
+        else{
+            input_meses.style.background = "white"
+
+            var v_meses = true
+        }
+
+        var confirmando_validacao = v_guardado && v_poupado && v_meses
+
+        alert(confirmando_validacao)
+        return(confirmando_validacao)
+    }
+
+    function tirar_vermelho(input){
+        if(input == 1){
+            input_guardado.style.background = "#ffff"
+        }
+        if(input == 2){
+            input_poupado.style.background = "#ffff"
+        }
+        if(input == 3){
+            input_meses.style.background = "#ffff"
+        }
+    }
+</script>
