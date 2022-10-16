@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <h2>Quiosque Mirosmar - Controle de Vendas</h2>
+
+    <br>
+    <b>------------------------------ABERTURA DO QUIOSQUE------------------------------</b> 
+    <br><br>
+
+    Entre com a quantidade de Água engarrafada no estoque: 
+    <input type="text" id="input_garrafa">
+
+    <br>
+    Entre com a quantidade de Coco fechado no estoque:
+    <input type="text" id="input_coco">
+
+    <br>
+    <button onclick="abrir_quiosque()">Abrir o quiosque</button>
+
+    <br><br>
+    <div id="div_mensagem_abertura"></div>
+    <br><br>
+    <b>------------------------------ESTOQUE INICIAL------------------------------</b> 
+
+    <br><br>
+    Águas engarrafadas: <span id="s_garrafa">0</span>
+    <br>
+    Coco fechado: <span id="s_coco">0</span>
+
+    <br><br>
+    <b>------------------------------REGISTRO DAS OPERAÇÕES DE VENDA------------------------------</b> 
+
+    <br><br>
+    Entre com a quandidade vendida: 
+    <input type="text" id="input_qnt_vendida"> 
+    Informe o produto vendido:
+    <select id="sel_produto_vendido">
+        <option value="Coco fechado">Coco fechado</option>
+        <option value="Água engarrafada">Água engarrafada</option>
+    </select> 
+    <button onclick="registrar_venda()">Registrar a venda</button>
+    <button  onclick="encerrar_turno()" style="background-color: red;">Encerrar turno</button>
+
+    <br><br>
+    <div id="div_mensagem_venda"></div>
+    <div id="div_mensagem_registro"></div>
+
+
+
+
+</body>
+</html>
+
+
+<script>
+
+    var garrafa_inicial = 0
+    var coco_inicial = 0
+
+
+    var garrafa = 0
+    var coco = 0
+
+    var coco_vendido = 0
+    var garrafa_vendida = 0
+
+    function abrir_quiosque(){
+
+        div_mensagem_abertura.innerHTML = ``
+        garrafa = Number(input_garrafa.value)
+        coco = Number(input_coco.value)
+
+        var mensagem = ""
+
+        if(garrafa < 100){
+            mensagem += "<br>Com essa quantidade de Água engarrafada não dá para abrir o quiosque"
+        }
+        else if(garrafa <= 1000){
+            mensagem += "<br>Engarrafe mais água de coco"
+
+            garrafa_inicial = garrafa
+            estoque_inicial_garrafa()        
+        }
+
+        if(coco < 200){
+            mensagem += "<br>Com essa quantidade de Coco fechado não dá para abrir o quiosque"
+        }
+        else if(coco <= 2000){
+            mensagem += "<br>Compre mais cocos"
+
+            coco_inicial = coco
+            estoque_inicial_coco()
+        }
+
+        div_mensagem_abertura.innerHTML = mensagem
+    }
+
+
+    function estoque_inicial_coco(){
+        s_coco.innerHTML = coco
+    }
+    function estoque_inicial_garrafa(){
+        s_garrafa.innerHTML = garrafa
+    }
+    function registrar_venda(){
+        div_mensagem_registro.innerHTML = ""
+        var qnt_vendida = Number(input_qnt_vendida.value)
+        var produto_vendido = sel_produto_vendido.value
+
+        var mensagem = ""
+        var estoque = 0
+
+        if(produto_vendido == "Coco fechado"){
+            coco = coco - qnt_vendida 
+            estoque = coco
+            coco_vendido += qnt_vendida
+        }
+
+        if(produto_vendido == "Água engarrafada"){
+            garrafa = garrafa - qnt_vendida
+            estoque = garrafa
+
+            garrafa_vendida += qnt_vendida
+
+        }
+
+
+        div_mensagem_venda.innerHTML += `<br>Com a venda de ${qnt_vendida} de ${produto_vendido} o saldo no estoque é de ${estoque}`
+
+        estoque_inicial_coco()
+        estoque_inicial_garrafa()
+    }
+
+    function encerrar_turno(){
+        div_mensagem_venda.innerHTML = ""
+
+        var mensagem_garrafa = ` Vendas de Água engarrafada
+                                <br>Saldo de produto no estoque: ${garrafa} 
+                                <br>Quantidade de vendas: ${garrafa_vendida}
+                                <br>Porcentagem das vendas: ${(garrafa_vendida / garrafa_inicial) * 100}%`
+
+        var mensagem_coco = `<br><br> Vendas de Coco fechado
+                                <br>Saldo de produto no estoque: ${coco} 
+                                <br>Quantidade de vendas: ${coco_vendido}
+                                <br>Porcentagem das vendas: ${(coco_vendido / coco_inicial) * 100}%`
+
+        div_mensagem_registro.innerHTML = mensagem_garrafa + mensagem_coco
+    }
+</script>
