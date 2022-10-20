@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <h2>TESTE DA COCA-COLA</h2>
+
+    Quantas Coca-Cola você acha que já bebeu na vida? <br>
+    <input type="text" id="in_bebeu">
+
+    <br><br>
+    <button onclick="ver_quantidade()">Ver quantidade</button>
+
+    <br><br>
+    <div id="div_mensagem">
+        
+    </div>
+</body>
+</html>
+
+<script>
+
+    function ver_quantidade(){
+        div_mensagem.innerHTML = ""
+        var bebeu = Number(in_bebeu.value)
+
+        for(var i = 0; i < bebeu; i++){
+            div_mensagem.innerHTML += `<img src="https://santaluzia.vteximg.com.br/arquivos/ids/973705-740-515/987611.jpg?v=637493607886230000" width="100px">`
+        }
+
+    }
+</script>

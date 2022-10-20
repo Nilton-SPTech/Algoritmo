@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Contador de café com leite</h2>
+
+    Quantas xícaras de café com leite você você já tomou na vida?
+    <br>
+    <input type="text" id="in_qnt">
+
+    <br><br>
+    <button onclick="ver_quantidade()">Ver quantidade</button>
+
+    <br><br>
+
+    
+
+    <div id="div_cafe"></div>
+    <br>
+    <div id="div_leite"></div>
+</body>
+</html>
+
+<script>
+
+    function ver_quantidade(){
+        var qnt = Number(in_qnt.value)
+
+        div_leite.innerHTML = ""
+        div_cafe.innerHTML = ""
+
+        var qnt_café = qnt * 2
+        // LAÇO DE REPETIÇÃO DO LEITE
+        for(var i = 0; i < qnt; i++){
+            div_cafe.innerHTML += `<img src="leite.jpg" width="100px">`
+        }
+
+        // LAÇO DE REPETIÇÃO DO CAFÉ
+        for(var i = 0; i < qnt_café; i++){
+            div_leite.innerHTML += `<img src="https://cdn.w600.comps.canstockphoto.com.br/colher-caf%C3%A9-banco-de-imagens_csp1241690.jpg" width="150px">`
+        }
+    }
+
+</script>
+
