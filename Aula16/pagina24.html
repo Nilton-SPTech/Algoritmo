@@ -12,7 +12,6 @@
 
     <button onclick="repetir5()">Repetir 5x</button>
 
-
     <div id="div_mensagem"></div>
 
 
@@ -24,12 +23,22 @@
     function repetir5(){
         div_mensagem.innerHTML = ``
 
+        // DISTRINCHANDO OS PARAMETRO DO FOR
+
+        
+        // 1 - [var i = 0] - É O PRIMEIRO PASSO, O setup/inicialização
+        // 2 - [i < 5] É O SEGUNDO PASSO, UMA CONDIÇÃO DE REPETIÇÃO
+        // 3 - [i++] É A TERCEIRA PARTE, última linha de código, geralmente é usada para fazer o incremento.
         for(var i = 0; i < 5; i++){
-            div_mensagem.innerHTML += `<br>FFF`
+            if(i == 3){
+                div_mensagem.innerHTML += `<br>AAA`
+            }
+            else{
+                div_mensagem.innerHTML += `<br>FFF`
+            }
         }
 
-
-
     }
+
     
 </script>
