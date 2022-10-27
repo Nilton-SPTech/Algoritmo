@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <button onclick="ver_sorte()">Ver minha sorte!</button>
+
+    <br><br>
+
+    <div id="div_coracao"></div>
+
+</body>
+</html>
+
+<script>
+
+    function ver_sorte(){
+
+        div_coracao.innerHTML = ""
+        var carta = `<img height="100px" src="https://cdn.pixabay.com/photo/2020/10/09/20/23/deck-of-cards-5641442_960_720.jpg">`
+
+        var coracao = `<img height="150px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOouuHCoHaZo_1lG8jdlIaet9uyX7macOYS74RtsE&s" >`
+
+        var numero = parseInt(1 + Math.random() * 22)
+
+        var i = 0
+        var contagem_coracao  = 0
+        var contagem_carta = 0 
+
+        while(i != numero){
+            var aleatorio = parseInt(Math.random() * 2)
+            
+            console.log(aleatorio)
+            if(aleatorio%2 == 0){
+                div_coracao.innerHTML += carta
+                contagem_carta++
+            }
+            else{
+                div_coracao.innerHTML += coracao
+                contagem_coracao++
+            }
+
+            if(contagem_carta == 11){
+                break
+            }
+
+            if(contagem_coracao == 11){
+                break
+            }
+            i++
+        }
+
+        if(contagem_coracao > contagem_carta){
+                div_coracao.innerHTML += `<br><br>Você tem mais sorte no amor`
+            }
+        else {
+                div_coracao.innerHTML += `<br><br>Você tem mais sorte no jogo`
+        }
+        
+    }
+</script>
