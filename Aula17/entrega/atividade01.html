@@ -25,25 +25,30 @@
 
 <script>
 
+
     function sorteio(){
         var num = Number(in_num.value)
 
         var i = 0
+        var verificar_sorte = false
         while(i < 20){
+            i++
             var num_sorteado = parseInt(Math.random() * 101)
 
-            console.log(num_sorteado)
-            if(num_sorteado == num){
+            verificar_sorte = num_sorteado == num 
+            if(verificar_sorte){
 
                 div_mensagem.innerHTML = `Muito bem, você é uma pessoa de sorte! Seu número saiu no ${i}º sorteio`
-                break
+                verificar_sorte = true
+                break   
             }
-            else{
-                div_mensagem.innerHTML = `É, você não tem muita sorte em sorteios, pelo visto`
-            }
-
-            i++
         }
+        
+        if(!verificar_sorte){
+            div_mensagem.innerHTML = `É, você não tem muita sorte em sorteios, pelo visto`
+        }
+
+        
 
 
     }
