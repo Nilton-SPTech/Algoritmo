@@ -17,17 +17,99 @@
 
     <button onclick="mostrar()">Mostrar todas</button>
     <br><br>
+
+    <button onclick="mostrar_invertido()">Mostrar invertido</button>
+
+    <br><br>
+    <button onclick="mostrar_colorido()">Mostrar colorido</button>
+
+    <br><br>
+    Pesquisa: 
+    <input  onkeyup="pesquisar()" type="text" id="in_pesquisa">
+    <br><br>
+
     <div id="div_mensagem"></div>
 </body>
 </html>
 
 <script>
     
-    function cadastrar(){
+    var sobremesas = []
 
+    function cadastrar(){
+        sobremesas.push(in_sobremesa.value)
+        
+        in_sobremesa.value = ''
     }
 
     function mostrar(){
+        div_mensagem.innerHTML = ''
 
+        var tamanho = sobremesas.length
+
+        var sobremesa = in_sobremesa.value
+
+
+        for(var i = sobremesas.length; i > sobremesa.length; i--){
+
+            
+            sobremesas[i] = sobremesa[i]
+
+            console.log(sobremesa[i])
+            div_mensagem.innerHTML += `${i +1} - ${sobremesa[i]}<br>`
+        }
     }
+
+    function mostrar_invertido(){
+        div_mensagem.innerHTML = ''
+
+        var tamanho = sobremesas.length
+        for(var i = tamanho - 1; i >= 0; i--){
+            div_mensagem.innerHTML += `${i + 1} - ${sobremesas[i]}<br>`
+        }
+    }
+
+    function mostrar_colorido(){
+        div_mensagem.innerHTML = ''
+
+        var tamanho = sobremesas.length
+        var  mensagem
+        for(var i = 0; i < tamanho; i++){
+
+            if(i%2 == 0){
+                mensagem = `<span style="color: blue">${i + 1} - ${sobremesas[i]}</span>`
+            }
+            else{
+                mensagem = `<span style="color: black">${i + 1} - ${sobremesas[i]}</span>`
+            }
+            div_mensagem.innerHTML += '<br>'+mensagem
+
+
+        }
+    }
+
+
+    function pesquisar(){
+        div_mensagem.innerHTML = ''
+        var texto_pesquisa = in_pesquisa.value
+
+        var contem = 0        
+        var mensagem 
+
+        if(sobremesas.indexOf(texto_pesquisa) >= 0){
+            
+            for(var i = 0; i < sobremesas.length; i++){
+                if(sobremesas[i] == texto_pesquisa){
+                    contem++
+                }
+            }
+            mensagem = `Você comeu ${texto_pesquisa} ${contem} vez(es)`
+        }
+        else{
+            mensagem = `Não comeu ${texto_pesquisa} ainda`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+        
 </script>
