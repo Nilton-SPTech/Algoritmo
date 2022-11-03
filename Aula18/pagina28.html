@@ -28,6 +28,11 @@
     </div>
 
     <br><br>
+    <input placeholder="Pesquisa" id="in_pesquisa" onkeyup="pesquisar()">
+    <br>
+    <div id="div_pesquisa"></div>
+    
+    <br><br><br>
     Selecione sua fruta: 
     <br>
     <select id="sel_frutas" onchange="selecionar_fruta()">
@@ -36,6 +41,8 @@
 
     <br><br>
     <div id="div_fruta_selecionada"></div>
+
+
 </body>
 
 </html>
@@ -82,5 +89,21 @@
 
         var fruta = sel_frutas.value
         div_fruta_selecionada.innerHTML = `A fruta que você selecionou: ${fruta}`
+    }
+
+    function pesquisar(){
+
+        var pesquisa = in_pesquisa.value
+
+        var frutas_index = frutas.indexOf(pesquisa) 
+        var mensagem 
+        if( frutas_index < 0){
+            mensagem  = 'Não esxiste'
+        }
+        else{
+            mensagem = `Está na posição ${frutas_index + 1}`
+        }
+
+        div_pesquisa.innerHTML = mensagem
     }
 </script>
