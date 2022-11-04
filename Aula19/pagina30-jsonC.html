@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    Insira seus amigos:
+    <input type="text" id="in_amigo">
+
+    <br>
+    <button onclick="cadastrar()">Cadastrar amigo</button>
+    <br>
+    <button onclick="exibir()">Mostrar Amigos</button>
+
+    <br>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    var pessoa = {
+        nome: 'abacate', 
+        idade : 19,
+        amigos: []
+    }
+
+    
+    function cadastrar(){
+        pessoa.amigos.push(in_amigo.value)
+
+        in_amigo.value = ""
+    }
+    function exibir(){
+        
+        div_mensagem.innerHTML += `Pessoa: ${pessoa.idade}<br>`
+        div_mensagem.innerHTML += `Sua idade: ${pessoa.idade}<br>`
+
+        div_mensagem.innerHTML += `Seus amigos: `
+
+        for(var i = 0; i < pessoa.amigos.length; i++){
+            
+            div_mensagem.innerHTML += ` ${pessoa.amigos[i]}, `
+        }
+    }
+
+
+</script>
