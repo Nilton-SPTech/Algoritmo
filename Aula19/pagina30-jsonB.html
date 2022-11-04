@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Insira sua idade:
+    <input type="text" id="in_idade">
+
+    <br>
+    <button onclick="cadastrar()">Cadastrar sua idade</button>
+    <br>
+    <br>
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+
+    
+    function cadastrar(){
+        var idade = Number(in_idade.value)
+        var pessoa = {
+            nome: 'abacate', 
+            idade,
+        }
+
+        div_mensagem.innerHTML = pessoa.idade
+    }
+
+</script>

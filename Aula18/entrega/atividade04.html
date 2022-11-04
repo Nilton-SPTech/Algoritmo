@@ -12,7 +12,10 @@
     <button onclick="cadastrar()">Cadastrar Filme</button>
     <br>
     <button onclick="favorito()">Ver Favoritos</button>
-    <br>
+    <br><br>
+
+    <div id="div_mensagem"></div>
+
 
 
 </body>
@@ -24,7 +27,14 @@
     function cadastrar() {
         cadastro.push(inCadastro.value)
     }
+    function favorito(){
 
+        var preferido = cadastro[0]
+        var odiado = cadastro[cadastro.length - 1]
+
+        div_mensagem.innerHTML = `O que mais gosta é ${preferido}
+                                <br>E desses, o que menos gosta é ${odiado}`
+    }
     
 
 </script>
