@@ -7,11 +7,49 @@
     <title>Document</title>
 </head>
 <body>
-
-    <input type="text" placeholder="" id="">
+    <h2>Cadastrar Produto</h2>
+    Produto: <br>
+    <input placeholder="Insira o nome do produto" type="text" id="in_produto">
     <br><br>
-    <button onclick="cadastrar">Cadastrar</button>
+    Tipo: 
+    <br>
+    <select id="sel_tipo">
 
+        <option value="Gerais">Gerais</option>
+        <option value="Alimento">Alimento</option>
+        <option value="Eletrônico">Eletrônico</option>
+    </select>
+    <br><br>
+    Valor: <br>
+    <input placeholder="Insira o valor do produto" type="text" id="in_valor">
+    <br><br>
+
+    <button onclick="cadastrar()">Registrar produto</button>
+
+    <button onclick="verificar()">Verficar produtos</button>
+    <br><br>
+    <div id="div_mensagem"></div>
+
+
+    <h2>Filtrar</h2>
+    Pesquisar por nome: <br>
+    <input type="text" id="in_pesquisa">
+
+    <button onclick="procurar_nome()">Procurar</button>
+    <br>
+    <div id="div_produto"></div>
+
+    <br><br>
+    
+    Pesquisar por tipo: <br>
+    <select id="sel_tipo_pesquisa">
+        <option value="Gerais">Gerais</option>
+        <option value="Alimento">Alimento</option>
+        <option value="Eletrônico">Eletrônico</option>
+    </select>
+    <button onclick="procurar_tipo()">Procurar</button>
+    <br>
+    <div id="div_tipo"></div>
 </body>
 </html>
 
@@ -20,14 +58,97 @@
     var lista = []
 
     function cadastrar(){
+        var produto = in_produto.value
+        var valor = in_valor.value
+        var tipo = sel_tipo.value
 
-        var lista_ = {
-            
+        if(produto == "" || valor == ""){
+            alert("Inválido! Verifique o preenchimento dos campos e tente novamente!")
         }
-        lista.push()
+        else{
+            //ISSO AQUI NO JSON FACILITA SUA VIDA
+            var lista_produto = {
+                produto, 
+                valor,
+                tipo,
+            }
+            lista.push(lista_produto)
+        }
     }
 
-    function exibir(){
 
+    function verificar(){
+
+        if(lista == ''){
+            alert("Não há produtos registrados na lista!")
+        }
+        else{
+            div_mensagem.innerHTML = ""
+            var mensagem = ''
+            for(var i = 0; i < lista.length; i++){
+
+                //LEMBRA QUE TEM QUE POR A POSIÇÃO DA LISTA. NÃO DO JSON
+                mensagem += `
+                Produto: ${lista[i].produto}<br>
+                Tipo: ${lista[i].tipo}<br>
+                Preço: R$ ${lista[i].valor}<br><br>`
+            }
+            div_mensagem.innerHTML = mensagem
+        }
     }
+
+    function procurar_nome(){
+        div_produto.innerHTML = ""
+        var pesquisa = in_pesquisa.value
+        var contador = 0
+        var produtos = ''
+        for(var i = 0; i < lista.length; i++){
+            if(pesquisa == lista[i].produto){
+                contador++
+                produtos += `
+                Produto: ${lista[i].produto}<br>
+                Tipo: ${lista[i].tipo}<br>
+                Preço: R$ ${lista[i].valor}<br><br>`
+            }
+
+        }
+        var mensagem = ''
+        if(contador != 0){
+            mensagem = produtos
+        }
+        else{
+            alert ("Não há nenhum produto com este nome registrado!"
+)        }
+
+        div_tipo.innerHTML = mensagem
+    }
+
+    function procurar_tipo(){
+        div_tipo.innerHTML = ''
+
+        var tipo = sel_tipo_pesquisa.value
+
+        var contador = 0
+        var produtos = ''
+        for(var i = 0; i < lista.length; i++){
+            if(tipo == lista[i].tipo){
+                contador++
+                produtos += `
+                Produto: ${lista[i].produto}<br>
+                Tipo: ${lista[i].tipo}<br>
+                Preço: R$ ${lista[i].valor}<br><br>`
+            }
+
+        }
+        var mensagem = ''
+        if(contador != 0){
+            mensagem = produtos
+        }
+        else{
+            alert("Não há nenhum produto com este tipo registrado!"
+)        }
+
+        div_tipo.innerHTML = mensagem
+    }
+
 </script>
