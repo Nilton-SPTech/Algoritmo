@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <input placeholder="Insira o nome do produto" type="text" id="in_produto">
+    <br><br>
+    <input placeholder="Insira o valor do produto" type="text" id="in_valor">
+
+    <br><br>
+    <button onclick="cadastrar()">Registrar produto</button>
+
+    <button onclick="verificar()">Verficar produtos</button>
+    <br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    var lista = []
+
+    function cadastrar(){
+        var produto = in_produto.value
+        var valor = Number(in_valor.value)
+
+        if(produto == "" || valor == ""){
+            alert("Inválido! Verifique o preenchimento dos campos e tente novamente!")
+        }
+        else{
+            //ISSO AQUI NO JSON FACILITA SUA VIDA
+            var lista_produto = {
+                produto, 
+                valor,
+            }
+            lista.push(lista_produto)
+        }
+    }
+
+
+    function verificar(){
+
+        if(lista == ''){
+            alert("Não há produtos registrados na lista!")
+        }
+        else{
+            div_mensagem.innerHTML = ""
+            var mensagem = ''
+            for(var i = 0; i < lista.length; i++){
+
+                //LEMBRA QUE TEM QUE POR A POSIÇÃO DA LISTA. NÃO DO JSON
+                mensagem += `
+                Produto: ${lista[i].produto}<br>
+                Preço: R$ ${lista[i].valor}<br><br>`
+            }
+            div_mensagem.innerHTML = mensagem
+        }
+
+
+    }
+</script>
