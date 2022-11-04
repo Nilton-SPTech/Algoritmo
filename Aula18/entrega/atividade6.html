@@ -28,14 +28,8 @@
 
         var mensagem = ''
         for(var i = 0; i < filmes.length; i++){
-
-            if(i == 0){
-                mensagem += `Seu filme favorito: ${filmes[i]}<br>`
-            }
-            else{
-                mensagem += `Seu ${i + 1}º filme favorito: ${filmes[i]}<br> `
-            }
-
+            mensagem += `Seu filme favorito: ${filmes[i]}<br> `
+            
         }
 
         div_mensagem.innerHTML = mensagem
