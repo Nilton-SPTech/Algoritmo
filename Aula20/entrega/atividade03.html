@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    Indique o resultado 
+    <br>
+    <select id="sel_resultado">
+        <option value="Vitória">Vitória</option>
+        <option value="Empate">Empate</option>
+        <option value="Derrota">Derrota</option>
+    </select>
+
+    <br><br>
+    <button onclick="registrar()">Registrar Jogo</button>
+
+    <br><br>
+    Indique qual jogo que saber resultado: 
+    <br>
+    <input type="text" id="in_pocisao" onkeyup="exibir()">
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    var resultados = []
+
+    function registrar(){
+        var resultado = sel_resultado.value 
+
+        resultados.push(resultado)
+
+        var v = 0
+        var e = 0
+        var d = 0
+
+        var pontos = 0
+        for(var i = 0; i < resultados.length; i++){
+            if(resultados[i] == 'Vitória'){
+                v++
+                pontos += 3
+            }
+
+            if(resultados[i] == 'Empate'){
+                e++
+                pontos += 1
+            }
+
+            if(resultados[i] == 'Derrota'){
+                d++
+            }
+        }
+
+        var pontos_desejavel = resultados.length * 3 
+        var aproveitamento = (pontos / pontos_desejavel) * 100
+
+
+        var mensagem = `O time teve: ${v} vitórias, ${e} empates, ${d} derrotas
+                        <br>Pontuação total: ${pontos} pontos
+                        <br>Aproveitamento: ${aproveitamento.toFixed(2)}%`
+
+        div_mensagem.innerHTML = mensagem
+
+    }
+
+    function exibir(){
+        var pocisao = Number(in_pocisao.value)
+
+        var resultado = resultados[pocisao -1]
+        var mensagem
+        if(resultado){
+            mensagem = `No ${pocisao}º jogo, o time ${resultado}`
+        }
+        else{
+            mensagem = `Não foi cadastrado um ${pocisao}º jogo`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

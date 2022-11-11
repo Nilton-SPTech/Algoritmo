@@ -8,5 +8,46 @@
 </head>
 <body>
     
+    Informe o nome do seu filho:
+    <br>
+    <input type="text" id="in_filho">
+
+    <br><br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="atualizar()">Atualizar família</button>
+
+    <br>
+    <div id="div_mensagem"></div>
 </body>
 </html>
+
+<script>
+
+    var filhos = []
+
+    function cadastrar(){
+
+        var filho = in_filho.value
+        if(filhos.indexOf(filho) < 0 ){
+            filhos.push(filho)
+        }
+        else{
+            alert("Não pode mais de 1 filho com o mesmo nome!")
+        }
+    }
+
+    function atualizar(){
+
+        var quantidade = filhos.length
+
+        var particular = quantidade * 3000
+        var publica = quantidade * 1500
+        
+        
+        var mensagem = `Você tem ${quantidade} filhos
+                        <br>
+                        Seu custo mensal será aproximadamente R$${particular.toFixed(2)} se colocar eles em escola particular ou R$${publica.toFixed(2)} se eles estudarem em escola pública`
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>
