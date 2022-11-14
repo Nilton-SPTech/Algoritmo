@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Digite um valor: 
+    <br>
+    <input type="text" id="in_numero">
+
+    <br><br>
+    <button onclick="analisar()">Analisar histórico</button>
+
+    <br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    var historico = []
+
+    function analisar(){
+        var num = Number(in_numero.value)
+
+        historico.push(num)
+
+        var tamanho = historico.length
+
+        var maior = historico[0]
+        var menor = historico[0]
+
+        var mensagem = ''
+        for(var i = 0; i < tamanho; i++){
+
+            if(historico[i] < menor){
+                menor = historico[i]
+            }
+
+            if(historico[i] > maior){
+                maior = historico[i]
+            }
+            mensagem += `${i + 1}º Número: ${historico[i]}<br>`
+        }
+
+
+        div_mensagem.innerHTML = `${mensagem}<br>
+                                Maior: ${maior}<br>
+                                Menor: ${menor}`
+    }
+
+</script>

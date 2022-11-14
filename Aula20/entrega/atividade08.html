@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+    *{
+        color: rgb(228, 127, 127);
+    }
+    h2{
+        font-size: 2.5rem;
+    }
+
+    input, button{
+        border: 1px solid rgb(136, 93, 0);
+        padding: 5px;
+        background-color: white;
+    }
+
+    button{
+        font-size: 1.2rem;
+        color: rgb(136, 93, 0);
+    }
+
+</style>
+<body>
+    
+
+    <div id="div_cadastro">
+        <h2>Análise de performance de alunos - Registro</h2>
+    
+        <br>
+        Entre com o nome do aluno: 
+        <input type="text" id="in_nome">
+    
+        <br><br>
+        Entre com a nota do aluno na AC-1: 
+        <input type="text" id="in_nota1">
+
+        <br><br>
+        Entre com a nota do aluno na AC-2: 
+        <input type="text" id="in_nota2">
+
+        <br><br>
+        Entre com a nota do aluno na AC-3: 
+        <input type="text" id="in_nota3">
+    
+        <br><br>
+        <button onclick="registrar()">Registrar</button>
+        <button onclick="analisar()">Analisar</button>
+    
+        <br><br>
+        <div id="div_mensagem"></div>
+    </div>
+
+    <div id="div_pesquisa" style="display: none;">
+        <h2>Análise de performance de alunos - Pesquisa</h2>
+
+        Entre com o intervalo de notas: 
+        <input type="text" id="in_menor" placeholder="De">
+        <input type="text" id="in_maior" placeholder="Até">
+
+        <br><br>
+        <button onclick="pesquisar()">Pesquisar</button>
+
+        <br><br>
+        <input type="text" id="in_ac">
+        <br><br>
+        <button onclick="pesquisa_ac()">Pesquisar por Avaliação continuada</button>
+        <br><br>
+        <div id="div_mensagem2"></div>
+    </div>
+
+</body>
+</html>
+
+<script>
+
+
+    var alunos = []
+
+    function registrar(){
+        var nome = in_nome.value
+        var ac1 = Number(in_nota1.value)
+        var ac2 = Number(in_nota2.value)
+        var ac3 = Number(in_nota3.value)
+
+        var validar_nome = nome != ""
+        var validar_nota = ac1 >= 0 && ac1 <= 10 && ac2 >= 0 && ac2 <= 10 && ac3 >= 0 && ac3 <= 10
+
+        if(validar_nome && validar_nota){
+            var lista = {
+                nome, 
+                ac1,
+                ac2,
+                ac3
+            }
+    
+            alunos.push(lista)
+            exibir()
+        }
+        else{
+            alert("Campos prenchidos de forma errada. Preencha os campos corretamente para prosseguir!")
+        }
+
+    }
+
+    function exibir(){
+
+        var quantidade = alunos.length
+
+        var mensagem = ''
+        for(var i = (quantidade - 1); i >= 0; i--){
+
+            mensagem += `Aluno: ${alunos[i].nome}, ac1: ${alunos[i].ac1} / ac2: ${alunos[i].ac2} / ac3: ${alunos[i].ac3}<br>`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+    function analisar(){
+        div_cadastro.style.display = 'none'
+        div_pesquisa.style.display = 'block'
+    }
+
+    function pesquisar(){
+        var menor_informado = Number(in_menor.value)
+        var maior_informado = Number(in_maior.value)
+
+        var validar = menor_informado >= 0 && menor_informado <=10 && maior_informado >= 0 && maior_informado <= 10
+
+        if(validar){
+            if(menor_informado <= maior_informado){
+                div_mensagem2.innerHTML = ''
+
+                var tamanho = alunos.length
+                
+                var maior = alunos[0].ac1
+                var menor = alunos[0].ac1
+                
+                var soma = 0
+                var alunos_pesquisa = []
+
+                var mensagem = ''
+                var contador = 0
+                for(var i = 0; i < tamanho; i++ ){
+                    
+                    var m_ac1 = ''
+                    var m_ac2 = ''
+                    var m_ac3 = ''
+
+                    var aluno = alunos[i]
+
+                    soma += aluno.ac1 + aluno.ac2 + aluno.ac3
+                    
+                    var validar_ac1 = aluno.ac1 >= menor_informado && aluno.ac1 <= maior_informado
+                    var validar_ac2 = aluno.ac2 >= menor_informado && aluno.ac2 <= maior_informado
+                    var validar_ac3 = aluno.ac3 >= menor_informado && aluno.ac3 <= maior_informado
+
+
+                    if(validar_ac1 || validar_ac2 || validar_ac3){
+                        contador++
+                        mensagem += `<br>O aluno ${aluno.nome} ficou com a nota `
+                        if(validar_ac1){
+                            m_ac1 = `ac-1: ${aluno.ac1},`
+                            mensagem += " " + m_ac1
+
+                            if(aluno.ac1 > maior){
+                                maior = aluno.ac1
+                            }
+
+                            if(aluno.ac1 < menor){
+                                menor = aluno.ac1
+                            }
+                        }
+    
+                        if(validar_ac2){
+                            m_ac2 = `ac-2: ${aluno.ac2},`
+                            mensagem += " " +m_ac2
+
+                            if(aluno.ac2 > maior){
+                                maior = aluno.ac2
+                            }
+
+                            if(aluno.ac2 < menor){
+                                menor = aluno.ac2
+                            }
+                        }
+    
+                        if(validar_ac3){
+                            m_ac3 = `ac-3: ${aluno.ac3}`
+                            mensagem += " " + m_ac3
+
+                            if(aluno.ac3 > maior){
+                                maior = aluno.ac3
+                            }
+
+                            if(aluno.ac3 < menor){
+                                menor = aluno.ac3
+                            }
+                        }
+                    }
+                }
+
+                var media = soma / tamanho
+
+                div_mensagem2.innerHTML = `${mensagem}<br>
+                Total de alunos registrados: ${tamanho}
+                <br>Total de alunos listado: ${contador} (com nota no intervalo informado)
+                <br>Maior Nota = ${maior}
+                <br>Menor Nota = ${menor}
+                <br>Média da Nota = ${media.toFixed(2)}`
+            }
+            else {
+                alert("Os valores devem corresponder com a diferença")
+            }
+        }
+        else{
+            alert("Os valores devem estar entre os intervalos de 0 até 10")
+        }
+    }
+
+    function pesquisa_ac(){
+        var prova = in_ac.value
+
+        var menor_informado = Number(in_menor.value)
+        var maior_informado = Number(in_maior.value)
+
+        if(prova == "ac1" || prova == "ac2" || prova == "ac3"){
+            div_mensagem2.innerHTML = ''
+
+            var validar = menor_informado >= 0 && menor_informado <=10 && maior_informado >= 0 && maior_informado <= 10
+
+            if(validar && menor_informado <= maior_informado){
+                var lista = []
+                for(var i = 0; i < alunos.length; i++){
+                    var aluno = undefined 
+                    
+                    if(prova == 'ac1'){
+                        validar = alunos[i].ac1 >= menor_informado && alunos[i].ac1 <= maior_informado 
+                        if(validar){
+                            aluno = 
+                            {
+                                nome: alunos[i].nome,
+                                ac: alunos[i].ac1
+                            }
+                        }
+                    }
+
+                    if(prova == 'ac2'){
+                        validar = alunos[i].ac2 >= menor_informado && alunos[i].ac2 <= maior_informado 
+                        if(validar){
+                            aluno = 
+                            {
+                                nome: alunos[i].nome,
+                                ac: alunos[i].ac2
+                            }   
+                        }
+                    }
+
+                    if(prova == 'ac3'){
+                        validar = alunos[i].ac3 >= menor_informado && alunos[i].ac3 <= maior_informado 
+                        if(validar){
+                            aluno = 
+                            {
+                                nome: alunos[i].nome,
+                                ac: alunos[i].ac3
+                            }   
+                        }                  
+                    }
+
+                    if(aluno != undefined){
+                        lista.push(aluno)
+                    }
+                }
+
+                var mensagem = ''
+
+                for(var i = 0; i < lista.length; i++){
+                    mensagem += `O aluno ${lista[i].nome} ficou com a nota ${lista[i].ac}<br>`
+                }
+                console.log(lista);
+
+                if(lista.length > 0){
+                    div_mensagem2.innerHTML = `${mensagem}<br>
+                        Total de alunos registrados: ${alunos.length}
+                        <br>Total de alunos listado: ${lista.length} (com nota no intervalo informado)`
+                }
+                else{
+                    alert("Nenhum aluno(a) foi listado")
+                }
+            }
+            else{
+                alert("Informe o intervalo corretamente")
+            }
+        }
+        else{
+            alert("Informe uma Avaliação Continua Correta")
+        }
+    }
+</script>

@@ -33,13 +33,14 @@
 
     function cadastrar(){
         var produto = in_produto.value
-        var preco = in_preco.value
+        var preco = Number(in_preco.value)
 
         var lista = {
             produto,
             preco
         }
 
+        console.log(produtos)
         produtos.push(lista)
     }
 
@@ -51,21 +52,43 @@
         var produto = ''
         var valor = 0
 
+        var barato = produtos[0].preco 
+        var caro = produtos[0].preco 
+
+        var produto_caro = produtos[0]
+        var produto_barato = produtos[0]
+
+        var soma = 0
+        var media = 0 
 
         for(var i = 0; i < produtos.length; i++){
             produto = produtos[i].produto
             valor = produtos[i].preco 
             venda = valor * 1.25
 
+            if(valor > caro){
+                caro = valor
+                produto_caro = produtos[i]
+            }
+            if(valor < barato){
+                barato = valor
+                produto_barato = produtos[i]
+            }
 
 
-            mensagem += `Produto ${i + 1}: ${produto}
+            soma += valor
+            mensagem += `<br><br>Produto ${i + 1}: ${produto}
                         <br>Preço de compra: R$${valor.toFixed(2)}. Vender por R$${venda.toFixed(2)}`
         }
 
+        media = soma / quantidade
 
-        div_mensagem.innerHTML = `Total de produtos: ${quantidade}<br><br>${mensagem}`
+        div_mensagem.innerHTML = `Total de produtos: ${quantidade} ${mensagem}`
 
+        div_mensagem.innerHTML += `<br><br>Produto mais caro: ${produto_caro.produto}
+                                <br>Produto mais barato: ${produto_barato.produto}
+                                <br>Soma dos preços: ${soma.toFixed(2)}
+                                <br>Média dos preços: ${media.toFixed(2)}`
     }
 
 </script>
