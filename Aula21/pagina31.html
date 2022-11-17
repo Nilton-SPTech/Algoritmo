@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    Escreva a sua frequência: 
+    <input type="text" id="in_freq">
+
+    <br><br>
+    Insira a primeira nota: 
+    <input type="text" id="in_nota1">
+
+    <br><br>
+    Insira a segunda nota: 
+    <input type="text" id="in_nota2">
+
+    <br><br>
+    <button onclick="verificar_media()">Calcular média</button>
+    <div id="div_resultado"></div>
+
+</body>
+</html>
+
+<script>
+
+    function verificar_media(){
+        var freq = Number(in_freq.value)
+        var nota1 = Number(in_nota1.value)
+        var nota2 = Number(in_nota2.value)
+
+        var media = (nota1 + nota2) / 2
+        
+        var frase = freq >= 75 && media >= 6 ? "Parabéns, você passou" : "Tente outra vez"
+    
+        div_resultado.innerHTML = frase
+    }
+</script>
