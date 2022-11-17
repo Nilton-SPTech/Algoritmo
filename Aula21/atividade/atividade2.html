@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    Digite sua idade: <br>
+    <input type="text" id="in_idade" onkeyup="estagio()">
+
+    <div>
+        Já passou pela infância: <span id="crianca"></span><br>
+        Já passou pela adolescência: <span id="jovem"></span><br>
+        Já é um idoso: <span id="velho"></span><br>
+        TOTAL DE PONTOS: <span id="ponto"></span><br>
+    </div>
+</body>
+</html>
+
+
+<script>
+
+    function estagio(){
+        var idade = Number(in_idade.value)
+
+        var infancia = idade > 0 
+        var adolescencia = idade >=18
+        var idoso = idade > 65
+
+        var pontos = 0
+
+        var validar_infancia = infancia ? true : false
+        var validar_adolescencia = adolescencia ? true : false
+        var validar_idoso = idoso ? true : false
+
+        var pontos = idade < 13 ? 10 : idade < 66 ? 30 : 80 
+            
+        crianca.innerHTML = validar_infancia
+        jovem.innerHTML = validar_adolescencia
+        velho.innerHTML = validar_idoso
+
+
+        ponto.innerHTML = pontos
+    }
+</script>
