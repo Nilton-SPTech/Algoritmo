@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+    *{
+        color: rgb(228, 127, 127);
+    }
+    h2{
+        font-size: 2.5rem;
+    }
+
+    input, button,select{
+        border: 1px solid rgb(136, 93, 0);
+        padding: 5px;
+        background-color: white;
+    }
+
+    button{
+        font-size: 1.2rem;
+        color: rgb(136, 93, 0);
+    }
+
+</style>
+<body>
+    
+
+    <div id="div_cadastro">
+        <h2>Análise de performance de alunos - Registro</h2>
+    
+        <br>
+        Entre com o nome do aluno: 
+        <input type="text" id="in_nome">
+    
+        <br><br>
+        Entre com a nota do aluno: 
+        <input type="text" id="in_nota">
+    
+        <br><br>
+        <button onclick="registrar()">Registrar</button>
+        <button onclick="analisar()">Analisar</button>
+    
+        <br><br>
+        <div id="div_mensagem"></div>
+    </div>
+
+    <div id="div_pesquisa" style="display: none;">
+        <h2>Análise de performance de alunos - Pesquisa</h2>
+
+        Entre com o intervalo de notas: 
+        <input type="text" id="in_menor" placeholder="De">
+        <input type="text" id="in_maior" placeholder="Até">
+
+        <br><br>
+        <select id="sel_filtro">
+            <option value="nome">Nome</option>
+            <option value="maior">Nota maior que</option>
+            <option value="menor">Nota menor que</option>
+        </select>
+        <input placeholder="Pesquisar" type="text" id="input_filtro">
+
+        <br>
+        <br><br>
+        <button onclick="pesquisar()">Pesquisar</button>
+        <button onclick="pesquisar_filtro()">Pesquisar Filtros</button>
+
+        <br><br>
+        <div id="div_mensagem2"></div>
+    </div>
+
+</body>
+</html>
+
+<script>
+
+
+    var alunos = []
+
+    function registrar(){
+        var nome = in_nome.value
+        var nota = Number(in_nota.value)
+
+        var validar_nome = nome != ""
+        var validar_nota = nota >= 0 && nota <= 10
+
+        if(validar_nome && validar_nota){
+            var lista = {
+                nome, 
+                nota
+            }
+    
+            alunos.push(lista)
+            exibir()
+        }
+        else{
+            alert("Campos prenchidos de forma errada. Preencha os campos corretamente para prosseguir!")
+        }
+
+    }
+
+    function exibir(){
+
+        var quantidade = alunos.length
+
+        var mensagem = ''
+        for(var i = (quantidade - 1); i >= 0; i--){
+
+            mensagem += `Aluno: ${alunos[i].nome}, nota: ${alunos[i].nota}<br>`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+
+
+    function analisar(){
+        div_cadastro.style.display = 'none'
+        div_pesquisa.style.display = 'block'
+    }
+
+    var menor_informado = 0
+    var maior_informado = 0
+    var alunos_pesquisa = []
+
+    function pesquisar(){
+        alunos_pesquisa = []
+        menor_informado = Number(in_menor.value)
+        maior_informado = Number(in_maior.value)
+
+        var validar = menor_informado >= 0 && menor_informado <=10 && maior_informado >= 0 && maior_informado <= 10
+
+        if(validar){
+            if(menor_informado <= maior_informado){
+                div_mensagem2.innerHTML = ''
+
+                var tamanho = alunos.length
+                var mensagem = ''
+
+                var maior = alunos[0].nota
+                var menor = alunos[0].nota
+
+                var soma = 0
+                for(var i = 0; i < tamanho; i++ ){
+
+                    var aluno = alunos[i]
+
+                    soma += aluno.nota
+
+                    if(aluno.nota >= menor_informado && aluno.nota <= maior_informado){
+                        alunos_pesquisa.push(aluno)
+                    }
+
+                    if(aluno.nota > maior){
+                        maior = aluno.nota
+                    }
+
+                    if(aluno.nota < menor){
+                        menor = aluno.nota
+                    }
+                }
+
+
+                for(var i = 0; i < alunos_pesquisa.length; i++){
+                    mensagem += `O aluno ${alunos_pesquisa[i].nome} ficou com a nota ${alunos_pesquisa[i].nota}<br>`
+                }
+
+
+                var media = soma / tamanho
+
+                div_mensagem2.innerHTML = `${mensagem}<br>
+                Total de alunos registrados: ${tamanho}
+                <br>Total de alunos listado: ${alunos_pesquisa.length} (com nota no intervalo informado)
+                <br>Maior Nota = ${maior}
+                <br>Menor Nota = ${menor}
+                <br>Média da Nota = ${media.toFixed(2)}`
+
+            }
+            else {
+                alert("Os valores devem corresponder com a diferença")
+            }
+        }
+        else{
+            alert("Os valores devem estar entre os intervalos de 0 até 10")
+        }
+    }
+
+    function pesquisar_filtro(){
+        var filtro = sel_filtro.value
+        var in_filtro = input_filtro.value
+
+        var mensagem = ''
+        var tamanho = alunos_pesquisa.length
+
+        var aluno_filtro = ''
+        var maior = 0
+        var menor = 10
+        var validar = false 
+        var pesquisa = 0 
+        var somaNota = 0 
+        if(!in_filtro == ''){
+
+            if(filtro == 'maior' && in_filtro <= maior_informado && in_filtro >= menor_informado){
+    
+                for(var i = 0; i < tamanho; i++ ){
+                    var aluno = alunos_pesquisa[i]
+    
+                    if(aluno.nota >= in_filtro){
+                        aluno_filtro += `O aluno ${aluno.nome} ficou com a nota ${aluno.nota}<br>`
+                        if(aluno.nota > maior){
+                                maior = aluno.nota
+                            }
+                        if(aluno.nota < menor){
+                            menor = aluno.nota
+                        }
+
+                        somaNota += aluno.nota
+                        pesquisa++
+                        validar = true
+
+                    }
+                }
+            }
+            else if(filtro == 'menor' && in_filtro <= maior_informado && in_filtro >= menor_informado){
+                for(var i = 0; i < tamanho; i++ ){
+                    var aluno = alunos_pesquisa[i]
+    
+                    if(aluno.nota <= in_filtro){
+                        aluno_filtro += `O aluno ${aluno.nome} ficou com a nota ${aluno.nota}<br>`
+                        if(aluno.nota > maior){
+                                maior = aluno.nota
+                            }
+                        if(aluno.nota < menor){
+                            menor = aluno.nota
+                        }
+                        somaNota += aluno.nota
+                        pesquisa++
+                        validar = true
+                    }
+                }
+            }
+            else if(filtro == 'nome'){
+                for(var i = 0; i < tamanho; i++ ){
+                    var aluno = alunos_pesquisa[i]
+    
+                    if(aluno.nome == in_filtro){
+                        aluno_filtro += `O aluno ${aluno.nome} ficou com a nota ${aluno.nota}<br>`
+
+                        if(aluno.nota > maior){
+                            maior = aluno.nota
+                            }
+                        if(aluno.nota < menor){
+                            menor = aluno.nota
+                        }
+                        somaNota += aluno.nota
+                        pesquisa++
+                        validar = true
+
+                    }
+                }
+    
+            }
+            else{
+                alert("Insira o filtro no intervalo de acordo com o intervalo de notas")
+            }
+    
+            if(validar){
+
+                media = somaNota / pesquisa 
+                div_mensagem2.innerHTML = `${aluno_filtro}<br>
+                Total de alunos registrados: ${tamanho}
+                <br>Total de alunos listado: ${pesquisa} (com nota no intervalo informado)
+                <br>Maior Nota = ${maior}
+                <br>Menor Nota = ${menor}
+                <br>Média da Nota = ${media.toFixed(2)}`
+                
+                
+            }
+        }
+        else{
+            alert("Digite alguma coisa no campo Pesquisar")
+        }
+
+
+    }
+</script>
