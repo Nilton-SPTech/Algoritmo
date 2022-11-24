@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Pontos Jogador: <b id="p_jogador">0</b>
+    <br>
+    Pontos adverário: <b id="a_jogador">0</b>
+
+    <div id="div_baralho">
+        <br><br>
+        <b>Baralho restante do Jogador:</b>
+        <br>
+        <div id="div_baralho_jogador"></div>
+    
+        <br><br>
+        <b>Baralho restante do adversário</b>
+        <div id="div_baralho_adversario"></div>
+    </div>
+
+
+    <br>
+    <button onclick="simular_batalha()">Simular Batalha</button>
+
+    <br><br>
+    <div id="div_batalha"></div>
+
+    <div id="div_mensagem_placar"></div>
+
+    <br><br>
+    <div id="div_resultado"></div>
+</body>
+</html>
+
+
+<script>
+
+    var cartas = [
+        {id: 1, forca: 3, resistencia: 3, img: "cartas/capitao_america.png", nome: 'Capitão América'},
+        {id: 2, forca: 1, resistencia: 1, img: "cartas/deadpool.png", nome: 'Deadpool'},
+        {id: 3, forca: 5, resistencia: 0, img: "cartas/homem_de_ferro.png", nome: 'Iron Man'},
+        {id: 4, forca: 1, resistencia: 2, img: "cartas/mercurio.png", nome: 'Quick Silver'},
+        {id: 5, forca: 2, resistencia: 2, img: "cartas/mulher_invisivel.png", nome: 'Invisible Woman'},
+        {id: 6, forca: 3, resistencia: 2, img: "cartas/sr_fantastico.png", nome: 'Mister Fantastic'},
+        {id: 7, forca: 3, resistencia: 4, img: "cartas/thor.png", nome: 'Thor'},
+        {id: 8, forca: 3, resistencia: 1, img: "cartas/venom.png", nome: 'Venom'},
+        {id: 9, forca: 2, resistencia: 1, img: "cartas/viuva_negra.png", nome: 'Black Widow'},
+        {id: 10, forca: 2, resistencia: 3, img: "cartas/wolverine.png", nome: 'Wolverine'}
+    ]
+
+
+    jogador = []
+    adversario = []
+
+    sortear_cartas()
+
+    function sortear_cartas(){
+
+        var j = 0
+        var a = 0
+        while(true){
+            var pocisao_jogador = parseInt(Math.random() * 10)
+            if(jogador.indexOf(cartas[pocisao_jogador]) < 0 && j < 5 ){
+                jogador.push(cartas[pocisao_jogador])
+                j++
+            }
+
+
+            var pocisao_adversario = parseInt(Math.random() * 10)
+  
+            if(adversario.indexOf(cartas[pocisao_adversario]) < 0 && a < 5){
+                adversario.push(cartas[pocisao_adversario])
+                a++
+            }
+
+            if(a == 5 && j == 5){
+                break
+            }   
+        }
+
+        mostrar_cartas()
+    }
+    
+    function mostrar_cartas(){
+
+        div_baralho_jogador.innerHTML = ''
+        div_baralho_adversario.innerHTML = ''
+
+        for(var i = 0; i < 5; i++){            
+
+            if(jogador[i] != ''){
+                div_baralho_jogador.innerHTML += `<img src="${jogador[i].img}" height="100px">`
+            }
+
+            if(adversario[i] != ''){
+                div_baralho_adversario.innerHTML += `<img src="${adversario[i].img}" height="100px">`
+            }
+        }
+    }
+
+    
+    var jogador_ganhou = 0
+    var adversario_ganhou = 0
+    function simular_batalha(){
+    
+        var validacao = jogador.length < 1 || adversario.length < 1 
+        if(!validacao){
+
+            while(true){
+                var a = false
+                var j = false
+
+                var pocisao_jogador = parseInt(Math.random() * 5)
+                var pocisao_adversario = parseInt(Math.random() * 5)
+
+                jogador_atual = jogador[pocisao_jogador]
+                adversario_atual = adversario[pocisao_adversario]
+
+                if(jogador_atual != ''){
+                    var img_jogador_atual = `<img src="${jogador_atual.img}" height="200px">`
+                    j = true
+                }
+                if(j){
+                    break
+                }
+            }
+
+            while(true){
+                var a = false
+
+                var pocisao_adversario = parseInt(Math.random() * 5)
+
+                adversario_atual = adversario[pocisao_adversario]
+
+                if(adversario_atual != ''){
+                    var img_adversario_atual = `<img src="${adversario_atual.img}" height="200px">`
+                    a = true
+                }
+                if(a){
+                    break
+                }
+            }
+
+            div_batalha.innerHTML = `${img_jogador_atual}<b>VS</b>${img_adversario_atual}`
+
+            jogador[pocisao_jogador] = ''
+            adversario[pocisao_adversario] = ''
+
+            mostrar_cartas()
+            
+            var resistencia_jogador = jogador_atual.resistencia
+            var resistencia_adversario = adversario_atual.resistencia
+
+            var forca_jogador = jogador_atual.forca
+            var forca_adversario = adversario_atual.forca
+
+
+            var dano_jogador =  (resistencia_adversario - forca_jogador) * -1 
+            var dano_adversario = (resistencia_jogador - forca_adversario) * -1 
+
+
+            var mensagem = '' 
+            var cor = ''
+
+            if(dano_jogador == dano_adversario){
+                jogador_ganhou ++
+                adversario_ganhou ++
+
+                mensagem = 'Houve um empate'
+                cor = 'blue'
+            }
+            else if(dano_jogador > dano_adversario){
+                jogador_ganhou += 3
+
+                mensagem = 'O jogador venceu'
+                cor = 'green'
+            }
+            else if(dano_jogador < dano_adversario){
+                adversario_ganhou += 3
+
+                mensagem = 'O adversario venceu'
+                cor = 'red'
+            }
+
+            
+            p_jogador.innerHTML = jogador_ganhou
+            a_jogador.innerHTML = adversario_ganhou
+
+            div_mensagem_placar.innerHTML = `<h2 style="color :${cor};">${mensagem}<h2>`
+
+            // VALIDAÇÃO PARA VER EM QUAL PONTO ESTAMOS
+
+            var validar_fim = false
+            for(var i = 0; i < jogador.length; i++){
+                if(jogador[i] != ''){
+                    validar_fim = true
+                }
+            }
+            if(!validar_fim){
+
+                var mensagem_placar = ''
+                var cor_placar = ''
+                if(jogador_ganhou == adversario_ganhou){
+                    mensagem_placar = "Oloco meo! Ambos são igualmente bons!"
+                    cor_placar = 'blue'
+                }
+                else if(jogador_ganhou > adversario_ganhou){
+                    mensagem_placar = `O jogador é o grande vencedor da partida com ${jogador_ganhou} pontos!`
+                    cor_placar = 'green'
+                }
+                else{
+                    mensagem_placar = `O adversário venceu a partida com ${adversario_ganhou} pontos! Vai lá treinar mais um pouquinho, jogador!`
+                    cor_placar = 'red'
+                }
+
+                div_baralho.innerHTML = ''
+                div_resultado.innerHTML = `
+                <b>Resultado: </b><br>
+                <h2 style= "color: ${cor_placar}">${mensagem_placar}</h2>`
+            }
+        }
+        else{
+            alert('Os jogadores não tem mais cartas')
+        }
+    }
+
+</script>
