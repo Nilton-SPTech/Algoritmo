@@ -19,29 +19,37 @@
 
 <script>
 
+    var palavra = []
+    var vezes = []
+
     function mostrar_palavra(){
-
-        var frase = in_frase.value
-        var palavra = []
-
-        for(var i = 0; i < frase.length ; i++){
-            var letra = frase[i]
-
-            var pocisao = palavra.indexOf("A")
-
-            console.log(pocisao)
-
-            
-
-
+        
+        var frase = in_frase.value 
+        
+        var pocisao_letra = frase.length - 1
+        var letra = frase[pocisao_letra]
+        
+        if(palavra.indexOf(letra) < 0){
+            palavra.push(letra)
+            vezes.push(1)
         }
-        console.log(palavra)
+        else{
+            var posicao = palavra.indexOf(letra)
+            vezes[posicao] += 1
+        }
 
+        var mensagem = ''
         for(var i = 0; i < palavra.length; i++){
-            div_mensagem += `"${palavra[i].letra}" -> usado ${palavra[i].quantidade} vezes<br>`
+            mensagem += `"${palavra[i]}" -> usado ${vezes[i]} vezes<br>`
         }
-
+        
+        if(frase == ''){
+            div_mensagem.innerHTML = ''
+            palavra = []
+            vezes = []
+        }
+        else{
+            div_mensagem.innerHTML = mensagem
+        }
     }
-
-
 </script>
