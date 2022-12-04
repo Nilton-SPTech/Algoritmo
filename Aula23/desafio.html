@@ -26,10 +26,9 @@
 
 
     var pilotos = []
-    var i = 0 
     function registrar(){
 
-        var nome = in_piloto.value + i
+        var nome = in_piloto.value
         if(pilotos.length <= 12){
             var piloto = {
                 nome, 
@@ -60,7 +59,7 @@
                 tempo = Number(tempo.toFixed(2))
                 piloto.tempo += tempo
 
-                
+
                 if(piloto.combustivel > 0){
                     piloto_auxiliar.push(piloto)
                     var mensagem = `Volta ${i + 1} - Piloto: ${piloto.nome} - Velocidade: ${velocidade} - Combustível: ${piloto.combustivel.toFixed(1)} - Tempo: ${tempo}<br>`
@@ -71,12 +70,13 @@
             div_mensagem.innerHTML += `<br><br>`
         }
         setTimeout(() => {
-            div_mensagem.innerHTML = ''
             podio()
         }, 10000);
     }
 
     function podio(){
+        div_mensagem.innerHTML = ''
+
         var primeiro = {nome: '', tempo: 0}
         var segundo = {nome: '', tempo: 0}
         var terceiro = {nome: '', tempo: 0} 
