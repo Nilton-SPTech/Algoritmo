@@ -70,16 +70,13 @@
             pilotos = piloto_auxiliar
             div_mensagem.innerHTML += `<br><br>`
         }
-        
         setTimeout(() => {
+            div_mensagem.innerHTML = ''
             podio()
         }, 10000);
-
     }
 
     function podio(){
-        div_mensagem.innerHTML = ''
-
         var primeiro = {nome: '', tempo: 0}
         var segundo = {nome: '', tempo: 0}
         var terceiro = {nome: '', tempo: 0} 
@@ -104,11 +101,12 @@
                 terceiro = piloto
             }
         }
-
         var mensagem = `
         1 - Carro: ${primeiro.nome} - Tempo Total: ${primeiro.tempo.toFixed(2)}
         <br>2 - Carro: ${segundo.nome} - Tempo Total: ${segundo.tempo.toFixed(2)}
         <br>3 - Carro: ${terceiro.nome} - Tempo Total: ${terceiro.tempo.toFixed(2)} `
+
+        div_mensagem.innerHTML = mensagem
     }
 
 </script>
